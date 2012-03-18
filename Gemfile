@@ -21,9 +21,12 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'ruby-debug19'
+gem 'pry'
+gem 'pry-doc'
 
 group :test do
   gem 'rspec-rails'
+  gem 'guard-rspec'
 end
 
 group :development do
