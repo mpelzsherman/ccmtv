@@ -1,0 +1,63 @@
+.row
+  .span2
+    -# Group
+    .btn-group
+      %button.btn g1
+      %button.btn g2
+      %button.btn g3
+  .span3
+    -# Group in a toolbar
+    .btn-toolbar
+      .btn-group
+        %button.btn tg1
+        %button.btn tg2
+        %button.btn tg3
+      .btn-group
+        %button.btn tg1
+        %button.btn tg2
+        %button.btn tg3
+  .span1
+    .btn-group
+      %button.btn.btn-mini.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        Action
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{href: '#'} choice1
+        %li.divider
+        %li
+          %a{href: '#'} choice2
+  .span1
+    .btn-group
+      %button.btn.btn-small.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        Action
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{href: '#'} choice1
+        %li.divider
+        %li
+          %a{href: '#'} choice2
+  .span1
+    .btn-group
+      %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        Action
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{href: '#'} choice1
+        %li.divider
+        %li
+          %a{href: '#'} choice2
+  .span2
+    .btn-group
+      %button.btn.btn-large YoYo
+      %button.btn.btn-large.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{href: '#'} choice1
+        %li.divider
+        %li
+          %a{href: '#'} choice2
+  .span3
