@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Composer:
+  = @person.composer
+%p
+  %b Performer:
+  = @person.performer
+%p
+  %b Date of birth:
+  = @person.date_of_birth
+%p
+  %b Birth location:
+  = @person.birth_location_id
+%p
+  %b Death location:
+  = @person.death_location_id
+%p
+  %b Canonical name:
+  = @person.canonical_name
+%p
+  %b Date of death:
+  = @person.date_of_death
+
+= link_to 'Edit', edit_person_path(@person)
+\|
+= link_to 'Back', people_path

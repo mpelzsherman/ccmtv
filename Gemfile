@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
-gem 'sqlite3'
-# gem 'mysql2'
+gem 'mysql2'
 gem 'simple_form'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,9 +24,9 @@ gem 'haml-rails'
 gem 'ruby-debug19'
 gem 'pry'
 gem 'pry-doc'
+gem 'rspec-rails'
 
 group :test do
-  gem 'rspec-rails'
   gem 'guard-rspec'
 end
 
