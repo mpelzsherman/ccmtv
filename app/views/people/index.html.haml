@@ -1,12 +1,12 @@
-%h1 Listing people
+%h1 People
 
-= link_to 'New Person', new_person_path
+.btn= link_to 'New Person', new_person_path
 = will_paginate(@people)
 
 %table
   %tr
     %th Canonical Name
-    %th Composer
+    %th Composer?
     %th Performer
     %th Birth
     %th Death
