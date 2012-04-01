@@ -1,2 +1,5 @@
 internal
 modx*
+/.bundle
+/log/*.log
+/tmp
