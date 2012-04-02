@@ -82,4 +82,4 @@ update epithets set prefix = NULL where length(prefix) = 0;
 update epithets set suffix = NULL where length(suffix) = 0;
 update epithets set stage_name = NULL where length(stage_name) = 0;
 
--- Epithet.all.each { |x| x.person.update_attribute(:canonical_name, x.canonical + (x.canonical_name.blank? ? '' : " [#{x.canonical_name}]") }}
+-- Epithet.all.each { |x| x.person.update_attribute(:canonical_name, x.canonical + (x.person.canonical_name.blank? ? '' : " [#{x.person.canonical_name}]") )}
