@@ -35,7 +35,6 @@ GEM
     bootstrap-will_paginate (0.0.7)
       will_paginate
     builder (3.0.0)
-    cancan (1.6.7)
     capistrano (2.8.0)
       highline
       net-scp (>= 1.0.0)
@@ -198,7 +197,6 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   bootstrap-will_paginate
-  cancan
   capistrano
   coffee-rails (~> 3.2.1)
   devise
