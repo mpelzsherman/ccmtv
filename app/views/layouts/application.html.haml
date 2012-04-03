@@ -20,18 +20,20 @@
             %a.brand{:href => "#"} PianoDB
             .nav-collapse
               %ul.nav.pull-right
-                %li= link_to "On Right"
-                %li= link_to "On Right"
-              %ul.nav
-                %li= link_to "People", admin_people_path
+                %li= link_to "Compositions"
+                %li= link_to "Performances"
                 %li.dropdown
                   %a.dropdown-toggle{"data-toggle" => 'dropdown'}
-                    Account
+                    People
                     %b.caret
                   %ul.dropdown-menu
                     %li
-                      %a{:href => '#'}
-                        choice 1
+                      %a{:href => admin_people_path} View
+                    %li
+                      %a{:href => new_admin_person_path} New
+              %ul.nav
+                %li= link_to "Top 10"
+                %li= link_to "Contribute"
     .container
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
