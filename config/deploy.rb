@@ -1,10 +1,10 @@
-#default_run_options[:pty] = true
-#ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
 set :application, "pianodb"
 set :repository,  "git@github.com:yakloinsteak/pianodb.git"
 set :user, 'pianodbc'
 set :use_sudo, false
-set :deploy_to,  'pianodbv2'
+set :deploy_to,  '/home3/pianodbc/pianodbv2'
 set :scm, :git
 
 role :web, "pianodb.com"                   # Your HTTP server, Apache/etc
