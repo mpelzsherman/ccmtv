@@ -12,7 +12,7 @@ role :web, "pianodb.com"                   # Your HTTP server, Apache/etc
 role :app, "pianodb.com"                   # This may be the same as your `Web` server
 role :db,  "pianodb.com", :primary => true # This is where Rails migrations will run
 
-after "deploy:update_code", :configure_database
+after "bundle:install", :configure_database
 desc "copy databse.yml into the current release path"
 task :configure_database do
   db_config = "#{deploy_to}/shared/database.yml"
@@ -24,13 +24,6 @@ desc "copy .htaccess into the current release path."
 task :configure_htaccess  do
   db_config = "#{deploy_to}/shared/htaccess"
   run "cp #{db_config} #{release_path}/public/.htaccess"
-end
-
-after "deploy:update_code", :link_current_pointer
-desc "Create a link called current in the public directory of the app pointing back to Rails root"
-task :link_current_pointer do
-  db_config = "#{deploy_to}/shared/htaccess"
-  run "ln -s #{current_path} #{current_path}/public/current"
 end
 
 # If you are using Passenger mod_rails uncomment this:
