@@ -1,3 +1,6 @@
+# Do an `ssh-add` with the key you use for git before deployment
+# Try `gem install capistrano_colors` if you like and require it in your ~/.caprc file.
+
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 set :application, "pianodb"
@@ -26,7 +29,6 @@ task :configure_htaccess  do
   run "cp #{db_config} #{release_path}/public/.htaccess"
 end
 
-# If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
