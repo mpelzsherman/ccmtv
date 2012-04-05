@@ -27,7 +27,7 @@ task :configure_htaccess  do
 end
 
 after "deploy:update_code", :link_current_pointer
-desc "Bluehost needs a link called current in the public directory of the app pointing back to Rails root"
+desc "Create a link called current in the public directory of the app pointing back to Rails root"
 task :link_current_pointer do
   db_config = "#{deploy_to}/shared/htaccess"
   run "ln -s #{current_path} #{current_path}/public/current"
