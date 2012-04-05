@@ -19,6 +19,20 @@ task :configure_database do
   run "cp #{db_config} #{release_path}/config/database.yml"
 end
 
+after "deploy:update_code", :configure_htaccess
+desc "copy .htaccess into the current release path."
+task :configure_htaccess  do
+  db_config = "#{deploy_to}/shared/htaccess"
+  run "cp #{db_config} #{release_path}/public/.htaccess"
+end
+
+after "deploy:update_code", :link_current_pointer
+desc "Bluehost needs a link called current in the public directory of the app pointing back to Rails root"
+task :link_current_pointer do
+  db_config = "#{deploy_to}/shared/htaccess"
+  run "ln -s #{current_path} #{current_path}/public/current"
+end
+
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do ; end
