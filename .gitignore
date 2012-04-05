@@ -1,4 +1,5 @@
 internal
+database.yml
 modx*
 /.bundle
 /log/*.log
