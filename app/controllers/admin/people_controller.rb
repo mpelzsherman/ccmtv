@@ -1,7 +1,5 @@
 module Admin
-  class PeopleController < ApplicationController
-    #before_filter { user_signed_in? }
-
+  class PeopleController < AdminController
     def index
       @people = Person.paginate(:page => params[:page]||1)
 

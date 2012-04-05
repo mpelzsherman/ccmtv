@@ -17,20 +17,26 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            %a.brand{:href => "#"} PianoDB
+            %a.brand{:href => "/"} PianoDB
             .nav-collapse
               %ul.nav.pull-right
-                %li= link_to "Compositions"
-                %li= link_to "Performances"
-                %li.dropdown
-                  %a.dropdown-toggle{"data-toggle" => 'dropdown'}
-                    People
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li
-                      %a{:href => admin_people_path} View
-                    %li
-                      %a{:href => new_admin_person_path} New
+                - if user_signed_in?
+                  %li= link_to 'logout', logout_path
+                  - if current_user.active?
+                    %li= link_to "Compositions"
+                    %li= link_to "Performances"
+                    %li.dropdown
+                      %a.dropdown-toggle{"data-toggle" => 'dropdown'}
+                        People
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li
+                          %a{:href => admin_people_path} View
+                        %li
+                          %a{:href => new_admin_person_path} New
+                - else
+                  %li= link_to 'login', login_path
+                  %li= link_to 'sign up', new_user_registration_path
               %ul.nav
                 %li= link_to "Top 10"
                 %li= link_to "Contribute"
