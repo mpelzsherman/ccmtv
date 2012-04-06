@@ -1,0 +1,48 @@
+%h1 Compositions
+
+= will_paginate(@compositions)
+
+%table.table.table-striped
+  %tr
+    %th Title
+    %th Comp group
+    %th Movement name
+    %th Movement num
+    %th Catalog
+    %th Composed
+    %th Musical key
+    %th Person
+    %th Rating
+    %th Rank
+    %th Views
+    %th
+    %th
+    %th
+
+  - @compositions.each do |composition|
+    %tr
+      %td= composition.title
+      %td= composition.comp_group
+      %td= composition.movement_name
+      %td= composition.movement_num
+      %td
+        = composition.catalog_num1
+        = composition.catalog_num2
+        = composition.catalog_num3
+      %td
+        = composition.year_composed_begin
+        to
+        = composition.year_composed_end
+      %td= composition.musical_key_id
+      %td= link_to composition.person.canonical_name, admin_person_path(composition.person)
+      %td= composition.rating
+      %td= composition.rank
+      %td= composition.views
+      %td= link_to 'S', admin_composition_path(composition)
+      %td= link_to 'E', edit_admin_composition_path(composition)
+      %td= link_to 'D', admin_composition_path(composition), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Composition', new_admin_composition_path
+= will_paginate(@compositions)

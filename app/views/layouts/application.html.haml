@@ -23,8 +23,16 @@
                 - if user_signed_in?
                   %li= link_to 'logout', logout_path
                   - if current_user.active?
-                    %li= link_to "Compositions"
                     %li= link_to "Performances"
+                    %li.dropdown
+                      %a.dropdown-toggle{"data-toggle" => 'dropdown'}
+                        Compositions
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li
+                          %a{:href => admin_compositions_path} View
+                        %li
+                          %a{:href => new_admin_composition_path} New
                     %li.dropdown
                       %a.dropdown-toggle{"data-toggle" => 'dropdown'}
                         People

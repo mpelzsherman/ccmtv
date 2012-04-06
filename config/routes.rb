@@ -1,7 +1,6 @@
 PianoDB::Application.routes.draw do
   devise_for :users
 
-  #devise_for :users, :controllers => { :sessions => 'sessions' }
   devise_scope :user do
     match '/login'          => 'devise/sessions#new',     :as => 'login'
     match '/users/sign_in'  => 'devise/sessions#new'
@@ -11,6 +10,7 @@ PianoDB::Application.routes.draw do
 
   namespace :admin do
     resources :people
+    resources :compositions
   end
 
   #   match 'products/:id' => 'catalog#view'
