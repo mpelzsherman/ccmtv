@@ -51,7 +51,16 @@ PianoDB::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => 'pianodb.com' }
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :address => 'mail.pianodb.com',
+    :user_name => 'do-not-reply@pianodb.com',
+    :password => 'P3tr!chor',
+    :authentication => :plain,
+    :openssl_verify_mode => 'none',
+    :port => 26
+  }
 
   # Enable threaded mode
   # config.threadsafe!
