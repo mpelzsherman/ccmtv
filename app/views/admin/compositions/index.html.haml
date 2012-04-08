@@ -1,9 +1,11 @@
 %h1 Compositions
+.btn= link_to 'New Composition', new_admin_composition_path
 
 = will_paginate(@compositions)
 
 %table.table.table-striped
   %tr
+    %th ID
     %th Title
     %th Comp group
     %th Movement name
@@ -21,6 +23,7 @@
 
   - @compositions.each do |composition|
     %tr
+      %td= composition.id
       %td= composition.title
       %td= composition.comp_group
       %td= composition.movement_name
@@ -44,5 +47,4 @@
 
 %br
 
-= link_to 'New Composition', new_admin_composition_path
 = will_paginate(@compositions)
