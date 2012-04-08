@@ -1,4 +1,5 @@
 PianoDB::Application.routes.draw do
+
   devise_for :users
 
   devise_scope :user do
@@ -9,8 +10,9 @@ PianoDB::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :people
     resources :compositions
+    resources :people
+    resources :performances
   end
 
   #   match 'products/:id' => 'catalog#view'

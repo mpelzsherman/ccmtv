@@ -5,63 +5,63 @@ module Admin
 
       respond_to do |format|
         format.html # index.html.erb
-        format.json { render :json => @admin_compositions }
+        format.json { render :json => @compositions }
       end
     end
 
     def show
-      @admin_composition = Composition.find(params[:id])
+      @composition = Composition.find(params[:id])
 
       respond_to do |format|
         format.html # show.html.erb
-        format.json { render :json => @admin_composition }
+        format.json { render :json => @composition }
       end
     end
 
     def new
-      @admin_composition = Composition.new
+      @composition = Composition.new
 
       respond_to do |format|
         format.html # new.html.erb
-        format.json { render :json => @admin_composition }
+        format.json { render :json => @composition }
       end
     end
 
     def edit
-      @admin_composition = Composition.find(params[:id])
+      @composition = Composition.find(params[:id])
     end
 
     def create
-      @admin_composition = Composition.new(params[:admin_composition])
+      @composition = Composition.new(params[:composition])
 
       respond_to do |format|
-        if @admin_composition.save
-          format.html { redirect_to @admin_composition, :notice => 'Composition was successfully created.' }
-          format.json { render :json => @admin_composition, :status => :created, :location => @admin_composition }
+        if @composition.save
+          format.html { redirect_to @composition, :notice => 'Composition was successfully created.' }
+          format.json { render :json => @composition, :status => :created, :location => @composition }
         else
           format.html { render :action => "new" }
-          format.json { render :json => @admin_composition.errors, :status => :unprocessable_entity }
+          format.json { render :json => @composition.errors, :status => :unprocessable_entity }
         end
       end
     end
 
     def update
-      @admin_composition = Composition.find(params[:id])
+      @composition = Composition.find(params[:id])
 
       respond_to do |format|
-        if @admin_composition.update_attributes(params[:admin_composition])
-          format.html { redirect_to @admin_composition, :notice => 'Composition was successfully updated.' }
+        if @composition.update_attributes(params[:composition])
+          format.html { redirect_to @composition, :notice => 'Composition was successfully updated.' }
           format.json { head :no_content }
         else
           format.html { render :action => "edit" }
-          format.json { render :json => @admin_composition.errors, :status => :unprocessable_entity }
+          format.json { render :json => @composition.errors, :status => :unprocessable_entity }
         end
       end
     end
 
     def destroy
-      @admin_composition = Composition.find(params[:id])
-      @admin_composition.destroy
+      @composition = Composition.find(params[:id])
+      @composition.destroy
 
       respond_to do |format|
         format.html { redirect_to admin_compositions_url }

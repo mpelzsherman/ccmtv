@@ -1,9 +1,9 @@
-= form_for @admin_composition do |f|
-  -if @admin_composition.errors.any?
+= form_for @composition, :url => new_admin_composition_path do |f|
+  -if @composition.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@admin_composition.errors.count, "error")} prohibited this admin_composition from being saved:"
+      %h2= "#{pluralize(@composition.errors.count, "error")} prohibited this composition from being saved:"
       %ul
-        - @admin_composition.errors.full_messages.each do |msg|
+        - @composition.errors.full_messages.each do |msg|
           %li= msg
 
   .field
