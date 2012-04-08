@@ -1,4 +1,4 @@
-class Admin::PeopleController < AdminController
+class Admin::PeopleController < Admin::BaseController
   def index
     @people = Person.paginate(:page => params[:page]||1)
 

@@ -1,5 +1,7 @@
 %h1 Performances
 
+= will_paginate(@performances)
+
 %table.table.table-striped
   %tr
     %th ID
@@ -23,5 +25,7 @@
       %td= link_to 'Destroy', admin_performance_path(performance), :confirm => 'Are you sure?', :method => :delete
 
 %br
+
+= will_paginate(@performances)
 
 = link_to 'New Performance', new_admin_performance_path
