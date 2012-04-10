@@ -1,4 +1,14 @@
 class ApplicationDecorator < Draper::Base
+  def person_link
+    h.link_to model.person.canonical_name, h.admin_person_path(model.person)
+  end
+
+  def composition_link
+    h.link_to(model.composition.title, h.admin_composition_path(model.composition)) +
+   ' by ' +
+    h.link_to(model.composition.composer.canonical_name, h.admin_person_path(model.composition.composer))
+  end
+
   # Lazy Helpers
   #   PRO: Call Rails helpers without the h. proxy
   #        ex: number_to_currency(model.price)

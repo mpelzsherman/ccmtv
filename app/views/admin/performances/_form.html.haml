@@ -1,9 +1,9 @@
-= form_for @admin_performance do |f|
-  -if @admin_performance.errors.any?
+= form_for @performance, :url => admin_performances_path do |f|
+  -if @performance.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@admin_performance.errors.count, "error")} prohibited this admin_performance from being saved:"
+      %h2= "#{pluralize(@performance.errors.count, "error")} prohibited this admin_performance from being saved:"
       %ul
-        - @admin_performance.errors.full_messages.each do |msg|
+        - @performance.errors.full_messages.each do |msg|
           %li= msg
 
   .actions

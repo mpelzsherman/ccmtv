@@ -4,7 +4,7 @@
 
 %table.table.table-striped
   %tr
-    %th ID
+    %th #
     %th Composition
     %th Type
     %th URL
@@ -16,10 +16,10 @@
   - @performances.each do |performance|
     %tr
       %td= performance.id
-      %td= performance.composition.title
+      %td= performance.composition_link
       %td= performance.type_name
-      %td= link_to '<i class="icon-music">&nbsp;</i>'.html_safe,  performance.url.http
-      %td= performance.person.canonical_name
+      %td= performance.url_link
+      %td= performance.person_link
       %td= link_to 'Show', admin_performance_path(performance)
       %td= link_to 'Edit', edit_admin_performance_path(performance)
       %td= link_to 'Destroy', admin_performance_path(performance), :confirm => 'Are you sure?', :method => :delete

@@ -2,50 +2,47 @@
 
 %p
   %b Title:
-  = @admin_composition.title_id
-%p
-  %b Title:
-  = @admin_composition.title
+  = @composition.title
 %p
   %b Comp group:
-  = @admin_composition.comp_group
+  = @composition.comp_group
 %p
   %b Movement name:
-  = @admin_composition.movement_name
+  = @composition.movement_name
 %p
   %b Movement num:
-  = @admin_composition.movement_num
+  = @composition.movement_num
 %p
   %b Catalog num1:
-  = @admin_composition.catalog_num1
+  = @composition.catalog_num1
 %p
   %b Catalog num2:
-  = @admin_composition.catalog_num2
+  = @composition.catalog_num2
 %p
   %b Catalog num3:
-  = @admin_composition.catalog_num3
+  = @composition.catalog_num3
 %p
   %b Year composed begin:
-  = @admin_composition.year_composed_begin
+  = @composition.year_composed_begin
 %p
   %b Year composed end:
-  = @admin_composition.year_composed_end
+  = @composition.year_composed_end
 %p
   %b Musical key:
-  = @admin_composition.musical_key_id
+  = @composition.musical_key_id
 %p
   %b Person:
-  = @admin_composition.person_id
+  = @composition.person_id
 %p
   %b Rating:
-  = @admin_composition.rating
+  = @composition.rating
 %p
   %b Rank:
-  = @admin_composition.rank
+  = @composition.rank
 %p
   %b Views:
-  = @admin_composition.views
+  = @composition.views
 
-= link_to 'Edit', edit_admin_composition_path(@admin_composition)
+= link_to 'Edit', edit_admin_composition_path(@composition)
 \|
 = link_to 'Back', admin_compositions_path

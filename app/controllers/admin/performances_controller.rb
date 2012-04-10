@@ -4,19 +4,19 @@ class Admin::PerformancesController < Admin::BaseController
   end
 
   def show
-    @performance = Performance.find(params[:id])
+    @performance = PerformanceDecorator.find(params[:id])
   end
 
   def new
-    @performance = Performance.new
+    @performance = PerformanceDecorator.new
   end
 
   def edit
-    @performance = Performance.find(params[:id])
+    @performance = PerformanceDecorator.find(params[:id])
   end
 
   def create
-    @performance = Performance.new(params[:performance])
+    @performance = PerformanceDecorator.new(params[:performance])
     if @performance.save
       redirect_to @performance, :notice => 'Performance was successfully created.'
     else
@@ -25,7 +25,7 @@ class Admin::PerformancesController < Admin::BaseController
   end
 
   def update
-    @performance = Performance.find(params[:id])
+    @performance = PerformanceDecorator.find(params[:id])
 
     if @performance.update_attributes(params[:performance])
       redirect_to @performance, :notice => 'Performance was successfully updated.'
@@ -35,8 +35,8 @@ class Admin::PerformancesController < Admin::BaseController
   end
 
   def destroy
-    @performance = Performance.find(params[:id])
+    @performance = PerformanceDecorator.find(params[:id])
     @performance.destroy
-    redirect_to performances_url
+    redirect_to admin_performances_url
   end
 end
