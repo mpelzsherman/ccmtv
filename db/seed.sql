@@ -172,6 +172,31 @@ INSERT INTO `locations` VALUES (1,'Oss',1),(2,'Cöthen',2),(3,'London',3),(4,'Co
 UNLOCK TABLES;
 
 --
+-- Table structure for table `musical_keys`
+--
+
+DROP TABLE IF EXISTS `musical_keys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `musical_keys` (
+  `id` int(10) unsigned NOT NULL,
+  `key_name` varchar(24) NOT NULL,
+  `short_key_name` varchar(2) NOT NULL COMMENT 'c#, C#, e, fb, fB, Bb, bb, b, B',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Things like D major';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `musical_keys`
+--
+
+LOCK TABLES `musical_keys` WRITE;
+/*!40000 ALTER TABLE `musical_keys` DISABLE KEYS */;
+INSERT INTO `musical_keys` VALUES (0,'C major','C'),(1,'C-sharp major','C#'),(2,'D major','D'),(3,'D-sharp major','D-'),(4,'E major','E'),(5,'F major','F'),(6,'F-sharp major','F-'),(7,'G major','G'),(8,'G-sharp major','G#'),(9,'A major','A'),(10,'A-sharp major','A#'),(11,'B major','B'),(12,'C minor','c'),(13,'C-sharp minor','c#'),(14,'D minor','d'),(15,'D-sharp minor','d-'),(16,'E minor','e'),(17,'F minor','f'),(18,'F-sharp minor','f-'),(19,'G minor','g'),(20,'G-sharp minor','g#'),(21,'A minor','a'),(22,'A-sharp minor','a#'),(23,'B minor','b'),(24,'D-flat major','Db'),(25,'E-flat major','Eb'),(26,'G-flat major','Gb'),(27,'A-flat major','Ab'),(28,'B-flat major','Bb'),(29,'D-flat minor','db'),(30,'E-flat minor','eb'),(31,'G-flat minor','gb'),(32,'A-flat minor','ab'),(33,'B-flat minor','bb'),(34,'Unknown','  ');
+/*!40000 ALTER TABLE `musical_keys` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `people`
 --
 
@@ -398,7 +423,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -407,7 +432,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'tdblackman@gmail.com','$2a$10$WbtjJI4gACxUF/t8mtX.0OxmTlccJ6o7PTcOLhvAo04c1YHqHBOmG',NULL,NULL,'2012-04-05 02:42:02',3,'2012-04-05 02:42:02','2012-04-05 02:32:54','127.0.0.1','127.0.0.1','2012-04-03 14:44:48','2012-04-05 02:42:02',1);
+INSERT INTO `users` VALUES (1,'tdblackman@gmail.com','$2a$10$WbtjJI4gACxUF/t8mtX.0OxmTlccJ6o7PTcOLhvAo04c1YHqHBOmG','NsGTQs5LTHds2nLG6xHy','2012-04-06 02:25:07',NULL,4,'2012-04-11 03:57:54','2012-04-06 02:46:10','75.164.210.207','75.175.55.47','2012-04-03 14:44:48','2012-04-11 03:57:54',1),(2,'petrichor@petrichor.me','$2a$10$SKB0IxPdan4ewNaItvm/Cuqy9fOxkE69YqAM3hpDdJ5XO0WZk2Uvu',NULL,NULL,NULL,1,'2012-04-06 07:42:39','2012-04-06 07:42:39','94.11.113.131','94.11.113.131','2012-04-06 07:42:39','2012-04-06 07:42:39',1),(3,'mpelzsherman@gmail.com','$2a$10$HWiHuXYdAjrJ7agHH9w8cO5C75wVA5v79QX7XiPeTNdqdb8S6kL82',NULL,NULL,NULL,1,'2012-04-06 14:36:41','2012-04-06 14:36:41','75.177.130.191','75.177.130.191','2012-04-06 14:36:41','2012-04-06 14:36:41',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -420,4 +445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-04-07 21:49:30
+-- Dump completed on 2012-04-12 20:54:55
