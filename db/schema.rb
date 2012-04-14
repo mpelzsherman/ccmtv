@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402040428) do
+ActiveRecord::Schema.define(:version => 20120408040702) do
+
+  create_table "admin_compositions", :force => true do |t|
+    t.integer  "title_id"
+    t.string   "title"
+    t.string   "comp_group"
+    t.string   "movement_name"
+    t.string   "movement_num"
+    t.string   "catalog_num1"
+    t.string   "catalog_num2"
+    t.string   "catalog_num3"
+    t.string   "year_composed_begin"
+    t.string   "year_composed_end"
+    t.integer  "musical_key_id"
+    t.integer  "person_id"
+    t.float    "rating"
+    t.integer  "rank"
+    t.integer  "views"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "admin_performances", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "countries", :force => true do |t|
     t.string "name"

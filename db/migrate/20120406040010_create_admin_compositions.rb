@@ -14,8 +14,8 @@ class CreateAdminCompositions < ActiveRecord::Migration
       t.integer :musical_key_id
       t.integer :person_id
       t.float :rating
-      t.int :rank
-      t.int :views
+      t.integer :rank
+      t.integer :views
 
       t.timestamps
     end
