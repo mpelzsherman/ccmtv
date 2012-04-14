@@ -6,4 +6,12 @@ class Person < ActiveRecord::Base
   scope :composers, where(:composer => true)
   scope :pianists, where(:performer => true)
   scope :top10, limit(10)
+
+  def rank
+    'N/A'
+  end
+
+  def views
+    'N/A'
+  end
 end

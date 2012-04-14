@@ -1,6 +1,11 @@
 class PerformanceDecorator < ApplicationDecorator
   decorates :performance
 
+  def full_title
+    model.person.canonical_name +  ' performs ' + model.composition.composer.canonical_name + "'s " + model.composition.title
+  end
+
+
   def url_link
     h.link_to 'link',  model.url.http, :target => '_blank', :title => model.url.http
   end

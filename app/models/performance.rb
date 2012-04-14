@@ -1,5 +1,6 @@
 class Performance < ActiveRecord::Base
   belongs_to :composition
+  #has_one    :performer, :though => :composition
   belongs_to :performance_type
   belongs_to :person
   belongs_to :url
