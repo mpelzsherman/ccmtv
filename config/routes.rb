@@ -1,5 +1,4 @@
 PianoDB::Application.routes.draw do
-
   devise_for :users
 
   devise_scope :user do
@@ -14,6 +13,8 @@ PianoDB::Application.routes.draw do
     resources :people
     resources :performances
   end
+
+  match 'top10' => 'site#top10'
 
   #   match 'products/:id' => 'catalog#view'
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
@@ -38,5 +39,5 @@ PianoDB::Application.routes.draw do
   #     end
   #   end
 
-  root :to => 'site#home'
+  root :to => 'site#top10'
 end

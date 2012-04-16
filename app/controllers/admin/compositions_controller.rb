@@ -1,6 +1,6 @@
 class Admin::CompositionsController < Admin::BaseController
   def index
-    @compositions = Composition.includes(:person).paginate(:page => params[:page]||1)
+    @compositions = Composition.includes(:composer).paginate(:page => params[:page]||1)
   end
 
   def show
