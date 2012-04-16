@@ -24,14 +24,14 @@ describe Admin::PerformancesController do
   describe "GET index" do
     it "assigns all performances as @performances" do
       get :index
-      assigns(:performances).should eq([performance])
+      assigns(:performances).should eq([mock_performance])
     end
   end
 
   describe "GET show" do
     it "assigns the requested performance as @performance" do
-      get :show, :id => performance.id.to_s
-      assigns(:performance).should eq(performance)
+      get :show, :id => mock_performance.id.to_s
+      assigns(:performance).should eq(mock_performance)
     end
   end
 
@@ -44,8 +44,8 @@ describe Admin::PerformancesController do
 
   describe "GET edit" do
     it "assigns the requested performance as @performance" do
-      get :edit, :id => performance.id.to_s
-      assigns(:performance).should eq(performance)
+      get :edit, :id => mock_performance.id.to_s
+      assigns(:performance).should eq(mock_performance)
     end
   end
 
@@ -65,7 +65,7 @@ describe Admin::PerformancesController do
 
       it "redirects to the created performance" do
         post :create, :performance => valid_attributes
-        response.should redirect_to(Performance.last)
+        response.should redirect_to(admin_performance_path(Performance.last))
       end
     end
 
@@ -89,8 +89,8 @@ describe Admin::PerformancesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested performance" do
-        Performance.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => performance.id, :performance => {'these' => 'params'}
+        mock_performance.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => mock_performance.id, :performance => {'these' => 'params'}
       end
 
       it "assigns the requested performance as @performance" do
@@ -99,8 +99,8 @@ describe Admin::PerformancesController do
       end
 
       it "redirects to the performance" do
-        put :update, :id => performance.id, :performance => valid_attributes
-        response.should redirect_to(mock_performance)
+        put :update, :id => mock_performance.id, :performance => valid_attributes
+        response.should redirect_to(admin_performance_path(mock_performance))
       end
     end
 
@@ -108,14 +108,14 @@ describe Admin::PerformancesController do
       it "assigns the performance as @performance" do
         # Trigger the behavior that occurs when invalid params are submitted
         mock_performance.stub(:save).and_return(false)
-        put :update, :id => performance.id.to_s, :performance => {}
+        put :update, :id => mock_performance.id.to_s, :performance => {}
         assigns(:performance).should eq(mock_performance)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         mock_performance.stub(:save).and_return(false)
-        put :update, :id => performance.id.to_s, :performance => {}
+        put :update, :id => mock_performance.id.to_s, :performance => {}
         response.should render_template("edit")
       end
     end

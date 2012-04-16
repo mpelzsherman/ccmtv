@@ -29,7 +29,7 @@ class Admin::PeopleController < Admin::BaseController
     @person = Person.find(params[:id])
 
     if @person.update_attributes(params[:person])
-      redirect_to @person, :notice => 'Person was successfully updated.'
+      redirect_to [:admin, @person], :notice => 'Person was successfully updated.'
     else
       render :action => "edit"
     end

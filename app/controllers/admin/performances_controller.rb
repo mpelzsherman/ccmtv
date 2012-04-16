@@ -37,6 +37,6 @@ class Admin::PerformancesController < Admin::BaseController
   def destroy
     @performance = Performance.find(params[:id])
     @performance.destroy
-    redirect_to admin_performances_url
+    redirect_to admin_performances_path
   end
 end

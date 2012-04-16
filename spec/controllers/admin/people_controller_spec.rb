@@ -19,6 +19,17 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe Admin::PeopleController do
+  let(:mock_person) { mock_model(Person, :id => 1).as_null_object }
+  let(:mock_user) { mock_model(User, :active? => true) }
+
+  before do
+    controller.stub(:authenticate_user!).and_return true
+    controller.stub(:user_signed_in?).and_return true
+    controller.stub(:current_user).and_return mock_user
+
+    Person.stub(:find).and_return(mock_person)
+    Person.stub(:paginate).and_return([mock_person])
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Person. As you add validations to Person, be sure to
@@ -74,7 +85,7 @@ describe Admin::PeopleController do
 
       it "redirects to the created person" do
         post :create, :person => valid_attributes
-        response.should redirect_to(Person.last)
+        response.should redirect_to(admin_person_path(Person.last))
       end
     end
 
@@ -108,15 +119,13 @@ describe Admin::PeopleController do
       end
 
       it "assigns the requested person as @person" do
-        person = Person.create! valid_attributes
-        put :update, :id => person.id, :person => valid_attributes
-        assigns(:person).should eq(person)
+        put :update, :id => mock_person.id, :person => valid_attributes
+        assigns(:person).should eq(mock_person)
       end
 
       it "redirects to the person" do
-        person = Person.create! valid_attributes
-        put :update, :id => person.id, :person => valid_attributes
-        response.should redirect_to(person)
+        put :update, :id => mock_person.id, :person => valid_attributes
+        response.should redirect_to(admin_person_path(person))
       end
     end
 
