@@ -19,7 +19,7 @@ class Admin::CompositionsController < Admin::BaseController
     @composition = Composition.new(params[:composition])
 
     if @composition.save
-      redirect_to @composition, :notice => 'Composition was successfully created.'
+      redirect_to admin_composition_path(@composition), :notice => 'Composition was successfully created.'
     else
       render :action => "new"
     end
@@ -29,7 +29,7 @@ class Admin::CompositionsController < Admin::BaseController
     @composition = Composition.find(params[:id])
 
     if @composition.update_attributes(params[:composition])
-      redirect_to @composition, :notice => 'Composition was successfully updated.'
+      redirect_to admin_composition_path(@composition), :notice => 'Composition was successfully updated.'
     else
       render :action => "edit"
     end

@@ -8,34 +8,34 @@ class Admin::PerformancesController < Admin::BaseController
   end
 
   def new
-    @performance = PerformanceDecorator.new
+    @performance = Performance.new
   end
 
   def edit
-    @performance = PerformanceDecorator.find(params[:id])
+    @performance = Performance.find(params[:id])
   end
 
   def create
-    @performance = PerformanceDecorator.new(params[:performance])
+    @performance = Performance.new(params[:performance])
     if @performance.save
-      redirect_to @performance, :notice => 'Performance was successfully created.'
+      redirect_to admin_performance_path(@performance), :notice => 'Performance was successfully created.'
     else
       render :action => "new"
     end
   end
 
   def update
-    @performance = PerformanceDecorator.find(params[:id])
+    @performance = Performance.find(params[:id])
 
     if @performance.update_attributes(params[:performance])
-      redirect_to @performance, :notice => 'Performance was successfully updated.'
+      redirect_to admin_performance_path(@performance), :notice => 'Performance was successfully updated.'
     else
       render :action => "edit"
     end
   end
 
   def destroy
-    @performance = PerformanceDecorator.find(params[:id])
+    @performance = Performance.find(params[:id])
     @performance.destroy
     redirect_to admin_performances_url
   end
