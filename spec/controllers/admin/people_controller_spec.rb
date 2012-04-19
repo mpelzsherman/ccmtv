@@ -40,17 +40,15 @@ describe Admin::PeopleController do
 
   describe "GET index" do
     it "assigns all people as @people" do
-      person = Person.create! valid_attributes
       get :index
-      assigns(:people).should eq([person])
+      assigns(:people).should eq([mock_person])
     end
   end
 
   describe "GET show" do
     it "assigns the requested person as @person" do
-      person = Person.create! valid_attributes
-      get :show, :id => person.id.to_s
-      assigns(:person).should eq(person)
+      get :show, :id => mock_person.id.to_s
+      assigns(:person).should eq(mock_person)
     end
   end
 
@@ -63,9 +61,8 @@ describe Admin::PeopleController do
 
   describe "GET edit" do
     it "assigns the requested person as @person" do
-      person = Person.create! valid_attributes
-      get :edit, :id => person.id.to_s
-      assigns(:person).should eq(person)
+      get :edit, :id => mock_person.id.to_s
+      assigns(:person).should eq(mock_person)
     end
   end
 
@@ -107,15 +104,17 @@ describe Admin::PeopleController do
   end
 
   describe "PUT update" do
+    before { mock_person.stub(:update_attributes).and_return(true) }
+
     describe "with valid params" do
       it "updates the requested person" do
-        person = Person.create! valid_attributes
         # Assuming there are no other people in the database, this
         # specifies that the Person created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Person.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => person.id, :person => {'these' => 'params'}
+        #
+        mock_person.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => mock_person.id, :person => {'these' => 'params'}
       end
 
       it "assigns the requested person as @person" do
@@ -125,24 +124,22 @@ describe Admin::PeopleController do
 
       it "redirects to the person" do
         put :update, :id => mock_person.id, :person => valid_attributes
-        response.should redirect_to(admin_person_path(person))
+        response.should redirect_to(admin_person_path(mock_person))
       end
     end
 
     describe "with invalid params" do
       it "assigns the person as @person" do
-        person = Person.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Person.any_instance.stub(:save).and_return(false)
-        put :update, :id => person.id.to_s, :person => {}
-        assigns(:person).should eq(person)
+        mock_person.stub(:save).and_return(false)
+        put :update, :id => mock_person.id.to_s, :person => {}
+        assigns(:person).should eq(mock_person)
       end
 
       it "re-renders the 'edit' template" do
-        person = Person.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Person.any_instance.stub(:save).and_return(false)
-        put :update, :id => person.id.to_s, :person => {}
+        mock_person.stub(:save).and_return(false)
+        put :update, :id => mock_person.id.to_s, :person => {}
         response.should render_template("edit")
       end
     end
@@ -159,7 +156,7 @@ describe Admin::PeopleController do
     it "redirects to the people list" do
       person = Person.create! valid_attributes
       delete :destroy, :id => person.id.to_s
-      response.should redirect_to(people_url)
+      response.should redirect_to(admin_people_path)
     end
   end
 

@@ -19,7 +19,7 @@ class Admin::PeopleController < Admin::BaseController
     @person = Person.new(params[:person])
 
     if @person.save
-      redirect_to @person, :notice => 'Person was successfully created.'
+      redirect_to admin_person_path(@person), :notice => 'Person was successfully created.'
     else
       render :action => "new"
     end
@@ -39,6 +39,6 @@ class Admin::PeopleController < Admin::BaseController
     @person = Person.find(params[:id])
     @person.destroy
 
-    redirect_to people_url
+    redirect_to admin_people_path
   end
 end
