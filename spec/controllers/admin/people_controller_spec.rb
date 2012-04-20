@@ -131,14 +131,14 @@ describe Admin::PeopleController do
     describe "with invalid params" do
       it "assigns the person as @person" do
         # Trigger the behavior that occurs when invalid params are submitted
-        mock_person.stub(:save).and_return(false)
+        mock_person.stub(:update_attributes).and_return(false)
         put :update, :id => mock_person.id.to_s, :person => {}
         assigns(:person).should eq(mock_person)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        mock_person.stub(:save).and_return(false)
+        mock_person.stub(:update_attributes).and_return(false)
         put :update, :id => mock_person.id.to_s, :person => {}
         response.should render_template("edit")
       end
@@ -147,10 +147,8 @@ describe Admin::PeopleController do
 
   describe "DELETE destroy" do
     it "destroys the requested person" do
-      person = Person.create! valid_attributes
-      expect {
-        delete :destroy, :id => person.id.to_s
-      }.to change(Person, :count).by(-1)
+      mock_person.should_receive(:destroy)
+      delete :destroy, :id => mock_person.id.to_s
     end
 
     it "redirects to the people list" do

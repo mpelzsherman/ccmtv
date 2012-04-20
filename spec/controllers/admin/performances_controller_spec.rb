@@ -107,14 +107,14 @@ describe Admin::PerformancesController do
     describe "with invalid params" do
       it "assigns the performance as @performance" do
         # Trigger the behavior that occurs when invalid params are submitted
-        mock_performance.stub(:save).and_return(false)
+        mock_performance.stub(:update_attributes).and_return(false)
         put :update, :id => mock_performance.id.to_s, :performance => {}
         assigns(:performance).should eq(mock_performance)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        mock_performance.stub(:save).and_return(false)
+        mock_performance.stub(:update_attributes).and_return(false)
         put :update, :id => mock_performance.id.to_s, :performance => {}
         response.should render_template("edit")
       end
@@ -123,10 +123,8 @@ describe Admin::PerformancesController do
 
   describe "DELETE destroy" do
     it "destroys the requested performance" do
-      performance = Performance.create! valid_attributes
-      expect {
-        delete :destroy, :id => performance.id.to_s
-      }.to change(Performance, :count).by(-1)
+      mock_performance.should_receive(:destroy)
+      delete :destroy, :id => mock_performance.id.to_s
     end
 
     it "redirects to the admin_performances list" do
