@@ -1,5 +1,7 @@
 PianoDB::Application.routes.draw do
 
+  resources :performances
+
   devise_for :users
 
   devise_scope :user do
