@@ -1,0 +1,67 @@
+%h1 PianoDB Home Page
+
+-#= render :partial => 'site/top10', :object => @performances
+%h2 Top Ten Performances
+.well
+  %table.table.table-striped.table-condensed
+    %thead
+      %tr
+        %th Rank
+        %th Performance
+        %th Rating
+        %th Views
+    %tbody
+      - @performances.each do |p|
+        %tr
+          %td=p.rank
+          %td=p.full_title
+          %td=p.rating
+          %td=p.views
+
+%h2 Top Ten Pianists
+.well
+  %table.table.table-striped.table-condensed
+    %thead
+      %tr
+        %th Rank
+        %th Pianist
+        %th Views
+    %tbody
+      - @pianists.each do |p|
+        %tr
+          %td=p.rank
+          %td=p.canonical_name
+          %td=p.views
+
+%h2 Top Ten Compositions
+.well
+  %table.table.table-striped.table-condensed
+    %thead
+      %tr
+        %th Rank
+        %th Composition
+        %th Rating
+        %th Views
+    %tbody
+      - @compositions.each do |c|
+        %tr
+          %td=c.rank
+          %td=c.full_title
+          %td=c.rating
+          %td=c.views
+
+%h2 Top Ten Composers
+.well
+  %table.table.table-striped.table-condensed
+    %thead
+      %tr
+        %th Rank
+        %th Composer
+        %th Views
+    %tbody
+      - @composers.each do |c|
+        %tr
+          %td=c.rank
+          %td=c.canonical_name
+          %td=c.views
+

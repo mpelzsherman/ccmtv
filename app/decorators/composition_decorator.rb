@@ -1,6 +1,10 @@
 class CompositionDecorator < ApplicationDecorator
   decorates :composition
 
+  def full_title
+    model.title + ' by ' + model.composer.canonical_name
+  end
+
   # Accessing Helpers
   #   You can access any helper via a proxy
   #
