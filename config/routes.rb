@@ -17,6 +17,8 @@ PianoDB::Application.routes.draw do
     resources :performances
   end
 
+  match 'top10' => 'site#top10'
+
   #   match 'products/:id' => 'catalog#view'
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
 
