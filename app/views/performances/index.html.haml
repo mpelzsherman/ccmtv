@@ -1,3 +1,4 @@
+-#todo: make admin/performances use this same view?
 %h1 Performances
 
 = will_paginate(@performances)
@@ -20,6 +21,7 @@
       %td= performance.type_name
       %td= performance.url_link
       %td= performance.performer_link
+      -#todo: wrap these in permissions using cancan
       %td= link_to 'Show', performance_path(performance)
       %td= link_to 'Edit', edit_admin_performance_path(performance)
       %td= link_to 'Destroy', admin_performance_path(performance), :confirm => 'Are you sure?', :method => :delete
@@ -28,4 +30,5 @@
 
 = will_paginate(@performances)
 
+-#todo: wrap this in permissions using cancan
 = link_to 'New Performance', new_admin_performance_path

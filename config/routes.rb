@@ -42,5 +42,5 @@ PianoDB::Application.routes.draw do
   #     end
   #   end
 
-  root :to => 'site#home'
+  root :to => 'site#top10'
 end
