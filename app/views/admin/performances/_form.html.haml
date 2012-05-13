@@ -6,5 +6,8 @@
         - @performance.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.label 'Composer'
+  = collection_select(:composer, :person_id, Person.order('canonical_name'), :id, :canonical_name, {}, {:class => "chzn-select"})
+
   .actions
     = f.submit 'Save'
