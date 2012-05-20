@@ -11,8 +11,8 @@
                       :canonical_name, {:prompt => 'Select a Performer'}, {:class => "chzn-select"})
 
   = f.label 'Composition'
-  = collection_select(:performance, :composition_id, Composition.order('title'), :id,
-                      :title, {:prompt => 'Select a Composition'}, {:class => "chzn-select"})
+  = collection_select(:performance, :composition_id, CompositionDecorator.decorate(CompositionDecorator.order('title')), :id,
+                      :full_title, {:prompt => 'Select a Composition'}, {:class => "chzn-select"})
 
   = f.label 'Performance Type'
   = collection_select(:performance, :performance_type_id, PerformanceType.order('name'), :id,
