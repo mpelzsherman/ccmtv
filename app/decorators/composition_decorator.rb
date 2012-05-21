@@ -5,8 +5,10 @@ class CompositionDecorator < ApplicationDecorator
     model.title + ' by ' + model.composer.canonical_name
   end
 
-  def to_json
-    composition.to_json(:methods => :full_title)
+  def as_json(*args)
+    {
+      :full_title => full_title
+    }
   end
 
   # Accessing Helpers
