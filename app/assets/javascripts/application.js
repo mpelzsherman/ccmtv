@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require chosen-jquery
+//= require jquery.tokeninput
 //= require bootstrap
 //= require bootstrap-tooltip
 //= require bootstrap-alert
