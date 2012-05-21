@@ -1,4 +1,6 @@
-%p#notice= notice
+%p
+  %b Canonical name:
+  = @person.canonical_name
 
 %p
   %b Composer:
@@ -15,9 +17,6 @@
 %p
   %b Death location:
   = @person.death_location_id
-%p
-  %b Canonical name:
-  = @person.canonical_name
 %p
   %b Date of death:
   = @person.date_of_death

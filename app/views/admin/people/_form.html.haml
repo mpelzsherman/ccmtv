@@ -1,4 +1,4 @@
-= form_for @person, :url => new_admin_person_path do |f|
+= simple_form_for [:admin, @person], :html => {:class => 'form-horizontal' } do |f|
   -if @person.errors.any?
     #error_explanation
       %h2= "#{pluralize(@person.errors.count, "error")} prohibited this person from being saved:"
@@ -6,26 +6,11 @@
         - @person.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :composer
-    = f.check_box :composer
-  .field
-    = f.label :performer
-    = f.check_box :performer
-  .field
-    = f.label :date_of_birth
-    = f.datetime_select :date_of_birth
-  .field
-    = f.label :birth_location_id
-    = f.number_field :birth_location_id
-  .field
-    = f.label :death_location_id
-    = f.number_field :death_location_id
-  .field
-    = f.label :canonical_name
-    = f.text_field :canonical_name
-  .field
-    = f.label :date_of_death
-    = f.datetime_select :date_of_death
-  .actions
-    = f.submit 'Save'
+  = f.input :canonical_name
+  = f.input :composer
+  = f.input :performer
+  = f.input :date_of_birth
+  -#= f.input :birth_location
+  -#= f.input :death_location
+  = f.input :date_of_death
+  = f.submit 'Save'

@@ -1,13 +1,13 @@
 = form_for [:admin, @performance] do |f|
   -if @performance.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@performance.errors.count, "error")} prohibited this admin_performance from being saved:"
+      %h2= "#{pluralize(@performance.errors.count, "error")} prohibited this performance from being saved:"
       %ul
         - @performance.errors.full_messages.each do |msg|
           %li= msg
 
   = f.label 'Performer'
-  = collection_select(:performance, :person_id, Person.where('performer = 1').order('canonical_name'), :id,
+  = collection_select(:performance, :person_id, Person.pianists.order('canonical_name'), :id,
                       :canonical_name, {:prompt => 'Select a Performer'}, {:class => "chzn-select"})
 
   = f.label 'Composition'
