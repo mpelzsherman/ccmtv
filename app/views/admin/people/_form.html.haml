@@ -9,8 +9,8 @@
   = f.input :canonical_name
   = f.input :composer
   = f.input :performer
-  = f.input :date_of_birth
+  = f.input :date_of_birth, :start_year => Person::EARLIEST_YEAR
   -#= f.input :birth_location
   -#= f.input :death_location
-  = f.input :date_of_death
+  = f.input :date_of_death, :start_year => Person::EARLIEST_YEAR
   = f.submit 'Save'

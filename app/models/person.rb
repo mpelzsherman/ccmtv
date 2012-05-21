@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  EARLIEST_YEAR = 1500
+
   has_many :epithets
   belongs_to :birth_location, :class_name => 'Location'
   belongs_to :death_location, :class_name => 'Location'
@@ -7,23 +9,20 @@ class Person < ActiveRecord::Base
   scope :pianists,  where(:performer => true)
   scope :top10,     limit(10)
 
-  validates_uniqueness_of :canonical_name
-  validates_presence_of :canonical_name
-  validates_length_of :canonical_name, :within => 2..200
-  validate :categorised?
+  validates :canonical_name, :uniqueness => true, :presence => true, :length => {  :within => 2..200 }
+  validate  :categorised?
 
   def rank
-    'N/A'
+    I18n.t(:na)
   end
 
   def views
-    'N/A'
+    I18n.t(:na)
   end
 
   private
 
-  # Must be at least one of these.
   def categorised?
-    errors[:base] << "You must make the person either a composer, performer, or both" unless composer || performer
+    errors[:base] << I18n.t(:either_composer_or_performer) unless composer || performer
   end
 end
