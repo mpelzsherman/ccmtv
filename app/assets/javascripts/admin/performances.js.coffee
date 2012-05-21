@@ -6,3 +6,4 @@ jQuery ->
     theme: 'facebook'
     prePopulate:$('#performance_composition_tokens').data('load')
     propertyToSearch: 'full_title'
+    tokenLimit: 1
