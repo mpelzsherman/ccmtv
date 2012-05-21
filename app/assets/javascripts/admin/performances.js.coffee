@@ -5,4 +5,4 @@ jQuery ->
    $('#performance_composition_tokens').tokenInput '/admin/compositions.json'
     theme: 'facebook'
     prePopulate:$('#performance_composition_tokens').data('load')
-    propertyToSearch: 'title'
+    propertyToSearch: 'full_title'

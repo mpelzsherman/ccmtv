@@ -11,7 +11,8 @@
                       :canonical_name, {:prompt => 'Select a Performer'}, {:class => "chzn-select"})
 
   = f.label :composition_tokens, 'Composition'
-  = f.text_field :composition_tokens, { 'data' => { :load => [@performance.composition] } }
+  = f.text_field :composition_tokens,
+  { 'data' => { :load => CompositionDecorator.decorate([@performance.composition]) } }
 
   = f.label 'Performance Type'
   = collection_select(:performance, :performance_type_id, PerformanceType.order('name'), :id,
