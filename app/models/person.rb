@@ -6,9 +6,10 @@ class Person < ActiveRecord::Base
   belongs_to :birth_location, :class_name => 'Location'
   belongs_to :death_location, :class_name => 'Location'
 
-  scope :composers, where(:composer => true)
-  scope :pianists,  where(:performer => true)
-  scope :top10,     limit(10)
+  scope :composers,         where(:composer => true)
+  scope :pianists,          where(:performer => true)
+  scope :top10,             limit(10)
+  scope :by_canonical_name, order(:canonical_name)
 
   validates :canonical_name, :uniqueness => true, :presence => true, :length => {  :within => 2..200 }
   validate  :categorised?

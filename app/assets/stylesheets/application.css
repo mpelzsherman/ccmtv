@@ -12,3 +12,8 @@
  *= require chosen
  *= require_tree .
 */
+
+.quiet {
+  color: gray;
+  font-size: 80%
+}

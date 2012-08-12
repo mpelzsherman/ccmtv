@@ -2,7 +2,7 @@ class Admin::PeopleController < Admin::BaseController
   before_filter :load_person, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @people = Person.paginate(:page => params[:page]||1)
+    @people = Person.by_canonical_name.paginate(:page => params[:page])
   end
 
   def show

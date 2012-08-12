@@ -7,8 +7,8 @@
   %ul
     - @person.epithets.each do |epithet|
       %li
-        = epithet.language.canonical_name
-        = epithet.full_name
+        = epithet.forename
+        %span= epithet.language.try(:canonical_name) or 'Unknown language'
 
 %p
   %b Composer:
