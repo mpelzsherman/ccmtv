@@ -19,7 +19,7 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe Admin::PeopleController do
-  let(:mock_person) { mock_model(Person, :id => 1).as_null_object }
+  let(:mock_person) { mock_model(Person, :id => 1, :to_param => {:id => 1}).as_null_object }
   let(:mock_user) { mock_model(User, :active? => true) }
 
   before do
@@ -29,6 +29,7 @@ describe Admin::PeopleController do
 
     Person.stub(:find).and_return(mock_person)
     Person.stub(:paginate).and_return([mock_person])
+    Person.stub(:save).and_return(true)
   end
 
   # This should return the minimal set of attributes required to create a valid
@@ -68,35 +69,29 @@ describe Admin::PeopleController do
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Person" do
-        expect {
-          post :create, :person => valid_attributes
-        }.to change(Person, :count).by(1)
-      end
-
-      it "assigns a newly created person as @person" do
-        post :create, :person => valid_attributes
-        assigns(:person).should be_a(Person)
-        assigns(:person).should be_persisted
+      before(:each) do
+        Person.should_receive(:new).and_return(mock_person)
+        mock_person.stub(:save).and_return(true)
       end
 
       it "redirects to the created person" do
         post :create, :person => valid_attributes
-        response.should redirect_to(admin_person_path(Person.last))
+        response.should redirect_to(admin_person_path(mock_person))
       end
     end
 
     describe "with invalid params" do
+      before(:each) do
+        Person.should_receive(:new).and_return(mock_person)
+        mock_person.stub(:save).and_return(false)
+      end
+
       it "assigns a newly created but unsaved person as @person" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Person.any_instance.stub(:save).and_return(false)
         post :create, :person => {}
-        assigns(:person).should be_a_new(Person)
+        assigns(:person).should == mock_person
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Person.any_instance.stub(:save).and_return(false)
         post :create, :person => {}
         response.should render_template("new")
       end
@@ -152,8 +147,7 @@ describe Admin::PeopleController do
     end
 
     it "redirects to the people list" do
-      person = Person.create! valid_attributes
-      delete :destroy, :id => person.id.to_s
+      delete :destroy, :id => mock_person.id.to_s
       response.should redirect_to(admin_people_path)
     end
   end

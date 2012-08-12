@@ -3,6 +3,14 @@
   = @person.canonical_name
 
 %p
+  %b Names
+  %ul
+    - @person.epithets.each do |epithet|
+      %li
+        = epithet.language.canonical_name
+        = epithet.full_name
+
+%p
   %b Composer:
   = @person.composer
 %p

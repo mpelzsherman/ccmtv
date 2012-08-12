@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402040428) do
+ActiveRecord::Schema.define(:version => 20120522150931) do
 
   create_table "compositions", :force => true do |t|
     t.integer "title_id"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(:version => 20120402040428) do
     t.datetime "created_on"
     t.datetime "updated_on"
   end
+
+  create_table "languages", :force => true do |t|
+    t.string  "name",        :null => false
+    t.string  "code2"
+    t.integer "language_id"
+    t.integer "parent_id"
+    t.date    "created_on"
+  end
+
+  add_index "languages", ["name"], :name => "index_languages_name", :unique => true
 
   create_table "locations", :force => true do |t|
     t.string  "name"

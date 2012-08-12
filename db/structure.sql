@@ -56,6 +56,17 @@ CREATE TABLE `epithets` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2381 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `languages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `code2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `language_id` int(11) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `created_on` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_languages_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `locations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -85,7 +96,7 @@ CREATE TABLE `people` (
   `created_on` datetime DEFAULT NULL,
   `updated_on` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10000919 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10000921 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `performance_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -171,3 +182,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120401045147');
 INSERT INTO schema_migrations (version) VALUES ('20120401045349');
 
 INSERT INTO schema_migrations (version) VALUES ('20120402040428');
+
+INSERT INTO schema_migrations (version) VALUES ('20120522150931');
