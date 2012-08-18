@@ -1,6 +1,10 @@
 class Admin::PeopleController < Admin::BaseController
   before_filter :load_person, :only => [:show, :edit, :update, :destroy]
 
+  def search
+    @people = Person.search.paginate(:page => params[:page])
+  end
+
   def index
     @people = Person.by_canonical_name.paginate(:page => params[:page])
   end

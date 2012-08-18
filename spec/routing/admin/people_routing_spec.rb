@@ -2,6 +2,9 @@ require "spec_helper"
 
 describe Admin::PeopleController do
   describe "routing" do
+    it "routes to #search" do
+      get("/admin/people/search").should route_to("admin/people#search")
+    end
 
     it "routes to #index" do
       get("/admin/people").should route_to("admin/people#index")

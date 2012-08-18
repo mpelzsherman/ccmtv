@@ -28,7 +28,8 @@ describe Admin::PeopleController do
     controller.stub(:current_user).and_return mock_user
 
     Person.stub(:find).and_return(mock_person)
-    Person.stub(:paginate).and_return([mock_person])
+    Person.stub_chain(:by_canonical_name, :paginate).and_return([mock_person])
+    Person.stub_chain(:search, :paginate).and_return([mock_person])
     Person.stub(:save).and_return(true)
   end
 
@@ -37,6 +38,13 @@ describe Admin::PeopleController do
   # update the return value of this method accordingly.
   def valid_attributes
     {}
+  end
+
+  describe "GET search" do
+    it "assigns all people as @people" do
+      get :search, :name => 'somebody'
+      assigns(:people).should eq([mock_person])
+    end
   end
 
   describe "GET index" do
