@@ -85,8 +85,8 @@ CREATE TABLE `musical_keys` (
 CREATE TABLE `people` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `canonical_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `composer` tinyint(1) DEFAULT NULL,
-  `performer` tinyint(1) DEFAULT NULL,
+  `composer` tinyint(1) NOT NULL DEFAULT '0',
+  `performer` tinyint(1) NOT NULL DEFAULT '0',
   `date_of_birth` date DEFAULT NULL,
   `birth_location_id` int(11) DEFAULT NULL,
   `death_location_id` int(11) DEFAULT NULL,
@@ -184,3 +184,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120401045349');
 INSERT INTO schema_migrations (version) VALUES ('20120402040428');
 
 INSERT INTO schema_migrations (version) VALUES ('20120522150931');
+
+INSERT INTO schema_migrations (version) VALUES ('20120825203946');

@@ -13,9 +13,7 @@ PianoDB::Application.routes.draw do
 
   namespace :admin do
     resources :compositions
-    resources :people do
-      get 'search', :on => :collection
-    end
+    resources :people
     resources :performances
   end
 

@@ -1,3 +1,5 @@
-= form_tag(admin_people_path, :method => :get, :class => 'form-inline form-search span2') do
-  = text_field_tag :person_name, '', {:class => 'input-small' }
-  %button.btn{:class => 'btn-small'} Search
+= simple_form_for [:admin, @person], :method => :get, :html => {:class => 'form-inline form-search span2' } do |f|
+  = f.input :canonical_name, :class => 'input-small'
+  = f.input :composer
+  = f.input :performer
+  = f.submit 'Search', :class => 'btn btn-small'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120522150931) do
+ActiveRecord::Schema.define(:version => 20120825203946) do
 
   create_table "compositions", :force => true do |t|
     t.integer "title_id"
@@ -88,14 +88,14 @@ ActiveRecord::Schema.define(:version => 20120522150931) do
 
   create_table "people", :force => true do |t|
     t.string   "canonical_name"
-    t.boolean  "composer"
-    t.boolean  "performer"
+    t.boolean  "composer",            :default => false, :null => false
+    t.boolean  "performer",           :default => false, :null => false
     t.date     "date_of_birth"
     t.integer  "birth_location_id"
     t.integer  "death_location_id"
     t.date     "date_of_death"
     t.integer  "current_location_id"
-    t.boolean  "published",           :default => true, :null => false
+    t.boolean  "published",           :default => true,  :null => false
     t.datetime "created_on"
     t.datetime "updated_on"
   end
