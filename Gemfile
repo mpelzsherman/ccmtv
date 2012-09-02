@@ -37,4 +37,5 @@ end
 group :development do
   gem 'unicorn'
   gem 'capistrano'
+  gem 'bullet'
 end
