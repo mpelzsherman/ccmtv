@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Person do
   let(:composer)  { Person.create!(:canonical_name => 'Jim',  :composer => true,  :performer => false) }
-  let(:performer) { Person.create!(:canonical_name => 'Sam',  :composer => false, :performer => true)  }
+  let(:performer) { Person.create!(:canonical_name => 'Sam Jones',  :composer => false, :performer => true)  }
   let(:both)      { Person.create!(:canonical_name => 'Lisa', :composer => true,  :performer => true)  }
 
   context "search" do
@@ -34,8 +34,12 @@ describe Person do
       result.should_not include(performer)
       result.should_not include(both)
       result.should     include(composer)
-
     end
 
+    it "should filter by name" do
+      result = Person.search(:canonical_name => 'one')
+      result.should     include(performer)
+      result.should_not include(composer)
+    end
   end
 end

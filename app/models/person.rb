@@ -24,8 +24,9 @@ class Person < ActiveRecord::Base
 
   def self.search params={}
     skope = scoped
-    skope = skope.where(:composer  => params[:composer]=='1')   unless params[:composer].blank?
+    skope = skope.where(:composer  => params[:composer]=='1')  unless params[:composer].blank?
     skope = skope.where(:performer => params[:performer]=='1') unless params[:performer].blank?
+    skope = skope.where(["canonical_name like ?", '%'+params[:canonical_name].downcase+'%']) unless params[:canonical_name].blank?
     skope
   end
 
