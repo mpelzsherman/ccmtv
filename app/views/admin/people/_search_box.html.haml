@@ -1,5 +1,5 @@
-= simple_form_for [:admin, @person], :method => :get, :html => {:class => 'form-inline form-search span2' } do |f|
-  = f.input :canonical_name, :class => 'input-small'
+= simple_form_for [:admin, @person], :method => :get, :html => {:class => 'form-inline form-search span7' } do |f|
+  = f.input_field :canonical_name, :class => 'input-small span3', :placeholder => "enter a person's name"
   = f.input :composer
   = f.input :performer
   = f.submit 'Search', :class => 'btn btn-small'

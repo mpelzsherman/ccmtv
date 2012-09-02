@@ -1,8 +1,9 @@
-%h1 People
+%h1
+  People
+  = link_to 'Create New Person', new_admin_person_path, :class => 'btn btn-small'
 
-.well
-  = render 'search_box'
-  = link_to 'New', new_admin_person_path, :class => 'btn btn-small'
+.well= render 'search_box'
+
 = will_paginate(@people)
 
 %table.table.table-striped
