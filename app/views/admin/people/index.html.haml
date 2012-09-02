@@ -1,6 +1,9 @@
-%h1 People
+%h1
+  People
+  = link_to 'Create New Person', new_admin_person_path, :class => 'btn btn-small'
 
-.btn= link_to 'New Person', new_admin_person_path
+.well= render 'search_box'
+
 = will_paginate(@people)
 
 %table.table.table-striped
@@ -22,13 +25,13 @@
       %td
         - if person.performer?
           %i.icon-music{:title => 'Performer'}
-      %td= person.canonical_name
+      %td= link_to person.canonical_name, [:admin, person]
       %td
         = person.date_of_birth
-        = person.birth_location_id
+        %em.quiet= person.birth_location.try(:name)
       %td
-        = person.death_location_id
         = person.date_of_death
+        %em.quiet= person.death_location.try(:name)
       %td= link_to '<i class=icon-eye-open>'.html_safe, admin_person_path(person)
       %td= link_to '<i class=icon-list-alt>'.html_safe, edit_admin_person_path(person)
       %td= link_to '<i class=icon-remove>'.html_safe, admin_person_path(person), :confirm => 'Are you sure?', :method => :delete

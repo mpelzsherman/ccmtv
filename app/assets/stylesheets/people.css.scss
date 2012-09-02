@@ -1,3 +1,12 @@
-// Place all the styles related to the People controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body.admin-people {
+  label, .controls, .control-group {
+    display: inline;
+    margin-right: 5px;
+  }
+
+  label { float: left; }
+
+  h1 {
+    margin-bottom: 1ex;
+  }
+}

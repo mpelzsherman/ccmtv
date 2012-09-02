@@ -1,18 +1,24 @@
 class Admin::PeopleController < Admin::BaseController
+  before_filter :load_person, :only => [:show, :edit, :update, :destroy]
+
   def index
-    @people = Person.paginate(:page => params[:page]||1)
+    params[:person] ||= {}
+    params[:person][:composer]  ||= '1'
+    params[:person][:performer] ||= '1'
+
+    @people = Person.search(params[:person]).by_canonical_name.paginate(:page => params[:page])
+    @person = Person.new(params[:person])
   end
 
   def show
-    @person = Person.find(params[:id])
   end
 
   def new
     @person = Person.new
+    @person.epithets.build
   end
 
   def edit
-    @person = Person.find(params[:id])
   end
 
   def create
@@ -26,8 +32,6 @@ class Admin::PeopleController < Admin::BaseController
   end
 
   def update
-    @person = Person.find(params[:id])
-
     if @person.update_attributes(params[:person])
       redirect_to [:admin, @person], :notice => 'Person was successfully updated.'
     else
@@ -40,5 +44,11 @@ class Admin::PeopleController < Admin::BaseController
     @person.destroy
 
     redirect_to admin_people_path
+  end
+
+  private
+
+  def load_person
+    @person = Person.find(params[:id])
   end
 end

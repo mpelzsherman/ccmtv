@@ -1,4 +1,14 @@
-%p#notice= notice
+%p
+  %b Canonical name:
+  = @person.canonical_name
+
+%p
+  %b Names
+  %ul
+    - @person.epithets.each do |epithet|
+      %li
+        = epithet.forename
+        %span= epithet.language.try(:canonical_name) or 'Unknown language'
 
 %p
   %b Composer:
@@ -15,9 +25,6 @@
 %p
   %b Death location:
   = @person.death_location_id
-%p
-  %b Canonical name:
-  = @person.canonical_name
 %p
   %b Date of death:
   = @person.date_of_death

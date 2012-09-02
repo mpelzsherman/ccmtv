@@ -1,31 +1,30 @@
-= form_for @person, :url => new_admin_person_path do |f|
+= simple_form_for [:admin, @person], :html => {:class => 'form-inline' } do |f|
   -if @person.errors.any?
-    #error_explanation
+    .alert.alert-error
       %h2= "#{pluralize(@person.errors.count, "error")} prohibited this person from being saved:"
       %ul
         - @person.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :composer
-    = f.check_box :composer
-  .field
-    = f.label :performer
-    = f.check_box :performer
-  .field
-    = f.label :date_of_birth
-    = f.datetime_select :date_of_birth
-  .field
-    = f.label :birth_location_id
-    = f.number_field :birth_location_id
-  .field
-    = f.label :death_location_id
-    = f.number_field :death_location_id
-  .field
-    = f.label :canonical_name
-    = f.text_field :canonical_name
-  .field
-    = f.label :date_of_death
-    = f.datetime_select :date_of_death
-  .actions
-    = f.submit 'Save'
+  .row-fluid
+    .span8
+      = f.input :canonical_name
+      = f.input :composer
+      = f.input :performer
+      = f.input :date_of_birth, :start_year => Person::EARLIEST_YEAR
+      -#= f.input :birth_location
+      -#= f.input :death_location
+      = f.input :date_of_death, :start_year => Person::EARLIEST_YEAR
+      = f.submit 'Save'
+    .span4
+      %fieldset.well
+        - @person.epithets.each do |epithet|
+          = f.simple_fields_for :epithets do |e|
+            = e.association :language
+            = e.input :title, :placeholder => '(e.g. Dr., Mr., Mrs.)'
+            = e.input :forename
+            = e.input :middle_name
+            = e.input :prefix
+            = e.input :surname
+            = e.input :suffix
+            = e.input :stage_name

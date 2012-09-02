@@ -1,7 +1,7 @@
 !!! 5
 %html{:lang => 'en'}
   %head= render :partial => 'site/html_head'
-  %body
+  %body{:class => @body_class}
     %header
       = render :partial => 'site/navbar'
     .container

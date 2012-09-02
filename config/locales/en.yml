@@ -3,3 +3,5 @@
 
 en:
   hello: "Hello world"
+  either_composer_or_performer: "You must make the person either a composer, performer, or both."
+  na: 'N/A'

@@ -14,7 +14,7 @@
       - @performances.each do |p|
         %tr
           %td=p.rank
-          %td=p.full_title
+          %td=link_to p.full_title, performance_path(p)
           %td=p.rating
           %td=p.views
 
