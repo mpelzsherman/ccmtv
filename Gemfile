@@ -18,14 +18,14 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'execjs'
-
+	gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0'
   gem 'bootstrap-sass'
 end
 
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'ruby-debug'
+gem 'ruby-debug19'
 gem 'pry'
 gem 'pry-doc'
 gem 'rspec-rails'
