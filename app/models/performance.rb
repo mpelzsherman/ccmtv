@@ -8,9 +8,12 @@ class Performance < ActiveRecord::Base
   has_and_belongs_to_many :urls
   scope :top10, limit(10)
   accepts_nested_attributes_for :composer, :performer, :url
-  attr_reader :composition_tokens
 
-  #def composition_tokens=(ids) # comma-separated
-  #  self.composition_tokens = ids.split(',')
-  #end
+  # Using jQuery tokenInput plugin. See http://railscasts.com/episodes/258-token-fields
+  attr_reader :composition_tokens
+  # setter method
+  def composition_tokens=(ids) # comma-separated
+    id = ids.split(',').first
+    self.composition_id = id unless id.nil?
+  end
 end

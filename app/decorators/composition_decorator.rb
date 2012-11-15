@@ -7,7 +7,8 @@ class CompositionDecorator < ApplicationDecorator
 
   def as_json(*args)
     {
-      :full_title => full_title
+      :full_title => full_title,
+      :id => id
     }
   end
 
