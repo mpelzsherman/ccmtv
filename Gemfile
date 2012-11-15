@@ -17,7 +17,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'execjs'
+  gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0'
   gem 'bootstrap-sass'
