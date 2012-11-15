@@ -1,5 +1,5 @@
 class Performance < ActiveRecord::Base
-  attr_accessible  :composition_tokens
+  attr_accessible  :composition_tokens, :performance_type_id, :composition_id, :person_id, :url_attributes
   belongs_to :composition
   has_one    :composer, :through => :composition
   belongs_to :performance_type
@@ -7,10 +7,10 @@ class Performance < ActiveRecord::Base
   belongs_to :url
   has_and_belongs_to_many :urls
   scope :top10, limit(10)
-  accepts_nested_attributes_for :composer, :performer
+  accepts_nested_attributes_for :composer, :performer, :url
   attr_reader :composition_tokens
 
-  def composition_tokens=(ids) # comma-separated
-      self.composition_tokens = ids.split(',')
-  end
+  #def composition_tokens=(ids) # comma-separated
+  #  self.composition_tokens = ids.split(',')
+  #end
 end
