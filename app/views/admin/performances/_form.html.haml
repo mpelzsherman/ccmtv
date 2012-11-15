@@ -10,16 +10,30 @@
   = collection_select(:performance, :person_id, Person.pianists.order('canonical_name'), :id,
                       :canonical_name, {:prompt => 'Select a Performer'}, {:class => "chzn-select"})
 
-  = f.label 'Composition'
-  = collection_select(:performance, :composition_id, Composition.order('title'), :id,
-                      :title, {:prompt => 'Select a Composition'}, {:class => "chzn-select"})
+  = f.label :composition_tokens, 'Composition'
+  = f.text_field :composition_tokens,
+  { 'data' => { :load => CompositionDecorator.decorate([@performance.composition]) } }
 
   = f.label 'Performance Type'
   = collection_select(:performance, :performance_type_id, PerformanceType.order('name'), :id,
                       :name, {:prompt => 'Select a Performance Type'}, {:class => "chzn-select"})
 
   = f.label 'URL'
-  = f.text_field :url
+  = f.fields_for :url do |b|
+    %div.span4
+      %fieldset.well
+        = b.label 'Anchor Text'
+        = b.text_field :anchor_text
+        = b.label 'HTTP'
+        = b.text_field :http, {:class => 'input-large'}
+        = b.label 'Embed Code'
+        = b.text_area :embeded_code
+
+    %div.span4
+      #video.well
+        !=@performance.url.embeded_code
+
+  .clearfix
 
   .actions
     = f.submit 'Save'

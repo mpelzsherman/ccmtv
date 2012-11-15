@@ -1,6 +1,11 @@
 class Admin::CompositionsController < Admin::BaseController
   def index
     @compositions = Composition.includes(:composer).paginate(:page => params[:page]||1)
+    respond_to do |format|
+      format.html
+      format.json { render :json => CompositionDecorator.decorate(@compositions.where("title like ?",
+                                                                                    "%#{params[:q]}%")) }
+    end
   end
 
   def show

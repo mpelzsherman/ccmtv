@@ -5,6 +5,13 @@ class CompositionDecorator < ApplicationDecorator
     model.title + ' by ' + model.composer.canonical_name
   end
 
+  def as_json(*args)
+    {
+      :full_title => full_title,
+      :id => id
+    }
+  end
+
   # Accessing Helpers
   #   You can access any helper via a proxy
   #

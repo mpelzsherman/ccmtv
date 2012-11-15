@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require chosen
+ *= require token-input-facebook
  *= require_tree .
 */
 

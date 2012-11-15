@@ -1,6 +1,0 @@
-Product.create!(name: "Settlers of Catan", price: 29.95)
-Product.create!(name: "Agricola", price: 45.99)
-Product.create!(name: "7 Wonders", price: 28.75)
-Product.create!(name: "Stone Age", price: 34.99)
-Product.create!(name: "Dominion", price: 29.99)
-Product.create!(name: "Goban", price: 175.95)
