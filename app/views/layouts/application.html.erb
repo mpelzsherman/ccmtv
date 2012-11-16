@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Barcode</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<%= render :partial => "shared/header" %>
+	<section id="container">
+		<div class="container">
+			<div class="row">
+				<section id="page-sidebar" class="alignrleft span9">
+					<%= yield %>
+				</section>
+				<aside id="sidebar" class="alignright span3">
+					<%= render :partial => "shared/sidebar" %>
+				</aside>					
+			</div>
+		</div>
+	</section>		
+
+	<%= render :partial => "shared/footer" %>
+</body>
+</html>
