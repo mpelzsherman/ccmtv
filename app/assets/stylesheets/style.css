@@ -5,10 +5,10 @@
 /*	1.	Global properties (body, common classes, vertical rhythm, structure etc)
 /*-----------------------------------------------------------------------------------*/
 body{
-    color:#787878;
+    color: #787878;
     font-size: 12px;
     font-family: Arial, sans-serif;
-    background: url(/assets/slider-bg.png);
+    background: #200501;;
 }
 header,
 nav,
@@ -174,7 +174,7 @@ h4.title a{
 #top-menu .delicious:hover{background: url(../images/delicioush.png) no-repeat center left;}
 
 #header {
-    background: url("../assets/header-bg.png") no-repeat scroll center top #21190E;
+    background: url("../assets/header-bg.png") no-repeat scroll center top #200501;
     border-bottom: 5px solid #40260C;
     box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.3);
     padding-bottom: 10px;
@@ -182,12 +182,14 @@ h4.title a{
     position: relative;
     z-index:5;
 }
+
 .logo {
     text-align: center;
     height:40px;
 }
+
 #header .logo img {
-    margin-bottom: -25px;
+    margin-bottom: -50px;
     margin-top: -65px;
 }
 
@@ -679,6 +681,7 @@ article.span3 h4{
 }
 .accordion .acc-block{padding: 20px 10px;}
 .accordion h4{
+
     color: #707070;
     text-transform: none;
 }

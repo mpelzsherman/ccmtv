@@ -11,12 +11,15 @@
 	<section id="container">
 		<div class="container">
 			<div class="row">
-				<section id="page-sidebar" class="alignrleft span9">
+				<div class="span2">
+					<%= render :partial => "shared/left_sidebar" %>
+				</div>	
+				<div class="span8">
 					<%= yield %>
-				</section>
-				<aside id="sidebar" class="alignright span3">
-					<%= render :partial => "shared/sidebar" %>
-				</aside>					
+				</div>
+				<div class="span2">
+					<%= render :partial => "shared/right_sidebar" %>
+				</div>					
 			</div>
 		</div>
 	</section>		

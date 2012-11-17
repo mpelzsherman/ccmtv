@@ -3,10 +3,10 @@
 %table.table.table-striped.table-condensed.table-bordered.table-top10
   %thead
     %tr
-      %th Rank
+      %th.rank Rank
       %th Performance
-      %th Rating
-      %th Views
+      %th.rating Rating
+      %th.views Views
   %tbody
     - @performances.each do |p|
       %tr
@@ -20,9 +20,9 @@
 %table.table.table-striped.table-condensed.table-bordered.table-top10
   %thead
     %tr
-      %th Rank
+      %th.rank Rank
       %th Pianist
-      %th Views
+      %th.views Views
   %tbody
     - @pianists.each do |p|
       %tr
@@ -35,10 +35,10 @@
 %table.table.table-striped.table-condensed.table-bordered.table-top10
   %thead
     %tr
-      %th Rank
+      %th.rank Rank
       %th Composition
-      %th Rating
-      %th Views
+      %th.rating Rating
+      %th.views Views
   %tbody
     - @compositions.each do |c|
       %tr
@@ -51,9 +51,9 @@
 %table.table.table-striped.table-condensed.table-bordered.table-top10
   %thead
     %tr
-      %th Rank
+      %th.rank Rank
       %th Composer
-      %th Views
+      %th.views Views
   %tbody
     - @composers.each do |c|
       %tr
