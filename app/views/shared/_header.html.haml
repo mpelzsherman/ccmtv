@@ -1,0 +1,25 @@
+%section#top-menu
+  .container
+    .row
+      .span6
+        %ul.top-social
+          - if user_signed_in?
+            %li= link_to 'logout', logout_path
+          - else
+            %li= link_to 'login', login_path
+            %li= link_to 'Request Account', new_user_registration_path
+%header#header
+  .container
+    .row-fluid
+      .logo
+        %a{:href => root_path}
+          %img{:alt => "logo", :src => "assets/logo.png"}/
+    %nav#menu
+      %ul
+        %li
+          %a.brand{:href => root_path}= site_name
+        %li= link_to 'Performances', performances_path
+        %li= link_to 'Compositions', compositions_path
+        %li= link_to 'Composers', composers_path
+        %li= link_to 'Performers', performers_path
+        %li= link_to 'Contact', 'contact'
