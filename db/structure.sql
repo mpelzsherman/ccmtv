@@ -56,17 +56,6 @@ CREATE TABLE `epithets` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2381 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `languages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `code2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `language_id` int(11) DEFAULT NULL,
-  `parent_id` int(11) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_languages_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `locations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -85,8 +74,8 @@ CREATE TABLE `musical_keys` (
 CREATE TABLE `people` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `canonical_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `composer` tinyint(1) NOT NULL DEFAULT '0',
-  `performer` tinyint(1) NOT NULL DEFAULT '0',
+  `composer` tinyint(1) DEFAULT NULL,
+  `performer` tinyint(1) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
   `birth_location_id` int(11) DEFAULT NULL,
   `death_location_id` int(11) DEFAULT NULL,
@@ -96,7 +85,7 @@ CREATE TABLE `people` (
   `created_on` datetime DEFAULT NULL,
   `updated_on` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10000921 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10000919 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `performance_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -182,7 +171,3 @@ INSERT INTO schema_migrations (version) VALUES ('20120401045147');
 INSERT INTO schema_migrations (version) VALUES ('20120401045349');
 
 INSERT INTO schema_migrations (version) VALUES ('20120402040428');
-
-INSERT INTO schema_migrations (version) VALUES ('20120522150931');
-
-INSERT INTO schema_migrations (version) VALUES ('20120825203946');
