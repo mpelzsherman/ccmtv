@@ -1,22 +1,15 @@
-!!! 5
-%html{:lang => 'en'}
-  %head= render :partial => 'site/html_head'
+!!!
+%html
+  %head
+    %title Barcode
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
   %body
-    %header
-      = render :partial => 'site/navbar'
-    .container
-      - flash.each do |name, msg|
-        %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-          %a.close{"data-dismiss" => "alert"} ×
-          = msg
-      .row
-        .span9
-          .well= yield
-        %aside.span3
-          .well
-            %h2 About PianoDB
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      %footer
+    = render :partial => 'shared/header'
+    %section#container
+      .container
         .row
           .span12
-            .well Footer
+            = yield
+    = render :partial => "shared/footer"

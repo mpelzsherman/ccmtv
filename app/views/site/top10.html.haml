@@ -1,67 +1,62 @@
-%h1 PianoDB Home Page
-
 -#= render :partial => 'site/top10', :object => @performances
 %h2 Top Ten Performances
-.well
-  %table.table.table-striped.table-condensed
-    %thead
+%table.table.table-striped.table-condensed.table-bordered.table-top10
+  %thead
+    %tr
+      %th.rank Rank
+      %th Performance
+      %th.rating Rating
+      %th.views Views
+  %tbody
+    - @performances.each do |p|
       %tr
-        %th Rank
-        %th Performance
-        %th Rating
-        %th Views
-    %tbody
-      - @performances.each do |p|
-        %tr
-          %td=p.rank
-          %td=link_to p.full_title, performance_path(p)
-          %td=p.rating
-          %td=p.views
+        %td=p.rank
+        %td=link_to p.full_title, performance_path(p)
+        %td=p.rating
+        %td=p.views
 
 %h2 Top Ten Pianists
-.well
-  %table.table.table-striped.table-condensed
-    %thead
+
+%table.table.table-striped.table-condensed.table-bordered.table-top10
+  %thead
+    %tr
+      %th.rank Rank
+      %th Pianist
+      %th.views Views
+  %tbody
+    - @pianists.each do |p|
       %tr
-        %th Rank
-        %th Pianist
-        %th Views
-    %tbody
-      - @pianists.each do |p|
-        %tr
-          %td=p.rank
-          %td=p.canonical_name
-          %td=p.views
+        %td=p.rank
+        %td=p.canonical_name
+        %td=p.views
 
 %h2 Top Ten Compositions
-.well
-  %table.table.table-striped.table-condensed
-    %thead
+
+%table.table.table-striped.table-condensed.table-bordered.table-top10
+  %thead
+    %tr
+      %th.rank Rank
+      %th Composition
+      %th.rating Rating
+      %th.views Views
+  %tbody
+    - @compositions.each do |c|
       %tr
-        %th Rank
-        %th Composition
-        %th Rating
-        %th Views
-    %tbody
-      - @compositions.each do |c|
-        %tr
-          %td=c.rank
-          %td=c.full_title
-          %td=c.rating
-          %td=c.views
+        %td=c.rank
+        %td=c.full_title
+        %td=c.rating
+        %td=c.views
 
 %h2 Top Ten Composers
-.well
-  %table.table.table-striped.table-condensed
-    %thead
+%table.table.table-striped.table-condensed.table-bordered.table-top10
+  %thead
+    %tr
+      %th.rank Rank
+      %th Composer
+      %th.views Views
+  %tbody
+    - @composers.each do |c|
       %tr
-        %th Rank
-        %th Composer
-        %th Views
-    %tbody
-      - @composers.each do |c|
-        %tr
-          %td=c.rank
-          %td=c.canonical_name
-          %td=c.views
-
+        %td=c.rank
+        %td=c.canonical_name
+        %td=c.views

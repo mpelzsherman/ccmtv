@@ -1,6 +1,6 @@
 PianoDB::Application.routes.draw do
 
-  resources :performances
+  resources :performances, :compositions
 
   devise_for :users
 
@@ -19,28 +19,8 @@ PianoDB::Application.routes.draw do
 
   match 'top10' => 'site#top10'
 
-  #   match 'products/:id' => 'catalog#view'
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
   root :to => 'site#top10'
+
+  match 'composers' => 'admin/people?composer=1'
+  match 'performers' => 'admin/people?performer=1'
 end
