@@ -24,7 +24,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'ruby-debug19'
+gem 'ruby-debug'
 gem 'pry'
 gem 'pry-doc'
 gem 'rspec-rails'
