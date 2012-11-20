@@ -44,7 +44,7 @@ h3,
 h4,
 h5,
 h6{
-    
+
     font-family: 'Arial', sans-serif;
 }
 
@@ -66,7 +66,7 @@ h3{
     font-weight:400;
     color: #813D02;
 }
-}
+
 h4{
     font-size: 16px;
     margin-bottom: 16px;
@@ -135,7 +135,7 @@ h4.title a{
     border-bottom: 1px solid #40260C;
 }
 
-}
+
 #top-menu ul.top-menu {
     margin-left:0;
     margin-top:3px;
