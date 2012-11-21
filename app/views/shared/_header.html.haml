@@ -1,8 +1,7 @@
 %section#top-menu
   .container
     .row
-      .span6 &nbsp;
-      .span6
+      .span12
         %ul.top-social
           - if user_signed_in?
             %li= link_to 'logout', logout_path
