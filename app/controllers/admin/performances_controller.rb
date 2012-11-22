@@ -9,6 +9,7 @@ class Admin::PerformancesController < Admin::BaseController
 
   def new
     @performance = Performance.new
+    @performance.url = Url.new
   end
 
   def edit
@@ -17,6 +18,7 @@ class Admin::PerformancesController < Admin::BaseController
 
   def create
     @performance = Performance.new(params[:performance])
+    @performance.url = Url.new(params[:performance][:url_attributes])
     if @performance.save
       redirect_to admin_performance_path(@performance), :notice => 'Performance was successfully created.'
     else
