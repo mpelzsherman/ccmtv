@@ -3,7 +3,7 @@
   %head= render :partial => 'site/html_head'
   %body{:class => @body_class}
     %header
-      = render :partial => 'site/navbar'
+      = render :partial => 'shared/header'
     .container
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
