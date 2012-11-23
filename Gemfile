@@ -17,7 +17,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer'
+  gem 'execjs'
 
   gem 'uglifier', '>= 1.0'
   gem 'bootstrap-sass'
@@ -25,7 +25,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'ruby-debug'
+gem 'debugger'
 gem 'pry'
 gem 'pry-doc'
 gem 'rspec-rails'
@@ -37,5 +37,6 @@ end
 group :development do
   gem 'unicorn'
   gem 'capistrano'
+  gem 'capistrano_colors'
   gem 'bullet'
 end

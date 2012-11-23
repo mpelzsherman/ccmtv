@@ -1,4 +1,5 @@
 internal
+bitnami/pianodb.pem
 database.yml
 modx*
 /.bundle

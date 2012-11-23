@@ -1,32 +1,33 @@
 # Do an `ssh-add` with the key you use for git before deployment
 # Try `gem install capistrano_colors` if you like and require it in your ~/.caprc file.
 
+ENV['EC2'] ||= 'ec2-54-245-136-251.us-west-2.compute.amazonaws.com'
+
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-set :application, "pianodb"
-set :repository,  "git@github.com:yakloinsteak/pianodb.git"
-set :user, 'pianodbc'
-set :use_sudo, false
-set :deploy_to,  '/home3/pianodbc/pianodbv2'
-set :scm, :git
-set :bundle_cmd, 'source $HOME/.bashrc && /home3/pianodbc/ruby/gems/bin/bundle'
 
-role :web, "pianodb.com"                   # Your HTTP server, Apache/etc
-role :app, "pianodb.com"                   # This may be the same as your `Web` server
-role :db,  "pianodb.com", :primary => true # This is where Rails migrations will run
+set :default_environment, {
+  'PATH' => '/opt/bitnami/memcached/bin:/opt/bitnami/perl/bin:/opt/bitnami/git/bin:/opt/bitnami/nginx/sbin:/opt/bitnami/sphinx/bin:/opt/bitnami/sqlite/bin:/opt/bitnami/php/bin:/opt/bitnami/mysql/bin:/opt/bitnami/apache2/bin:/opt/bitnami/subversion/bin:/opt/bitnami/ruby/bin:/opt/bitnami/common/bin:/opt/bitnami/memcached/bin:/opt/bitnami/perl/bin:/opt/bitnami/git/bin:/opt/bitnami/nginx/sbin:/opt/bitnami/sphinx/bin:/opt/bitnami/sqlite/bin:/opt/bitnami/php/bin:/opt/bitnami/mysql/bin:/opt/bitnami/apache2/bin:/opt/bitnami/subversion/bin:/opt/bitnami/ruby/bin:/opt/bitnami/common/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games'
+}
+
+set :application, "pnodb"
+set :repository,  "git@github.com:yakloinsteak/pianodb.git"
+set :user, 'bitnami'
+set :use_sudo, false
+set :deploy_to,  '/opt/bitnami/apps/pnodb'
+set :scm, :git
+set :bundle_cmd, '/opt/bitnami/ruby/bin/bundle'
+set :branch, 'bitnami'
+
+role :web, ENV['EC2']                   # Your HTTP server, Apache/etc
+role :app, ENV['EC2']                   # This may be the same as your `Web` server
+role :db,  ENV['EC2'], :primary => true # This is where Rails migrations will run
 
 after "bundle:install", :configure_database
 desc "copy databse.yml into the current release path"
 task :configure_database do
   db_config = "#{deploy_to}/shared/database.yml"
   run "cp #{db_config} #{release_path}/config/database.yml"
-end
-
-after "deploy:update_code", :configure_htaccess
-desc "copy .htaccess into the current release path."
-task :configure_htaccess  do
-  db_config = "#{deploy_to}/shared/htaccess"
-  run "cp #{db_config} #{release_path}/public/.htaccess"
 end
 
 namespace :deploy do
