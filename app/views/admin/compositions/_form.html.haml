@@ -1,17 +1,21 @@
-= form_for @composition, :url => new_admin_composition_path do |f|
+= form_for [:admin, @composition] do |f|
   -if @composition.errors.any?
     #error_explanation
       %h2= "#{pluralize(@composition.errors.count, "error")} prohibited this composition from being saved:"
       %ul
         - @composition.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :title_id
-    = f.number_field :title_id
+  -#Why do we have a "title" table?
+  -#.field
+  -#  = f.label :title_id
+  -#  = f.number_field :title_id
   .field
     = f.label :title
     = f.text_field :title
+  .field
+    = f.label :person, 'Composer'
+    = collection_select(:composition, :person_id, Person.composers.order('canonical_name'), :id,
+                        :canonical_name, {:prompt => 'Select a Composer'}, {:class => "chzn-select"})
   .field
     = f.label :comp_group
     = f.text_field :comp_group
@@ -38,10 +42,8 @@
     = f.text_field :year_composed_end
   .field
     = f.label :musical_key_id
-    = f.number_field :musical_key_id
-  .field
-    = f.label :person_id
-    = f.number_field :person_id
+    = collection_select(:composition, :musical_key_id, MusicalKey.order('id'), :id,
+                        :key_name, {:prompt => 'Select a Musical Key'}, {:class => "chzn-select"})
   .field
     = f.label :rating
     = f.text_field :rating
