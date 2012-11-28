@@ -1,7 +1,16 @@
 %section#top-menu
   .container
     .row
-      .span12
+      .span3
+        #google_translate_element
+        :javascript
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'en'
+            }, 'google_translate_element');
+          }
+        %script{:src => "http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"}
+      .span9
         %ul.top-social
           %li= link_to 'Contact', 'contact'
           - if user_signed_in?
@@ -12,14 +21,6 @@
 %header#header
   .container
     .row-fluid
-      #google_translate_element
-      :javascript
-        function googleTranslateElementInit() {
-          new google.translate.TranslateElement({
-            pageLanguage: 'en'
-          }, 'google_translate_element');
-        }
-      %script{:src => "http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"}
       .logo
         =link_to image_tag("logo.png"), root_path
     %nav#menu
