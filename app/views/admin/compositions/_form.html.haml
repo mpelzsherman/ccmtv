@@ -1,4 +1,4 @@
-= form_for [:admin, @composition] do |f|
+= simple_form_for [:admin, @composition] do |f|
   -if @composition.errors.any?
     #error_explanation
       %h2= "#{pluralize(@composition.errors.count, "error")} prohibited this composition from being saved:"
@@ -42,8 +42,7 @@
     = f.text_field :year_composed_end
   .field
     = f.label :musical_key_id
-    = collection_select(:composition, :musical_key_id, MusicalKey.order('id'), :id,
-                        :key_name, {:prompt => 'Select a Musical Key'}, {:class => "chzn-select"})
+    = f.association :musical_key
   .field
     = f.label :rating
     = f.text_field :rating
