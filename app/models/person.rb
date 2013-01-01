@@ -3,8 +3,8 @@ class Person < ActiveRecord::Base
 
   has_many :epithets
   accepts_nested_attributes_for :epithets, :allow_destroy => true
-  belongs_to :birth_location, :class_name => 'Location'
-  belongs_to :death_location, :class_name => 'Location'
+  belongs_to :birth_country, :class_name => 'Country'
+  belongs_to :death_country, :class_name => 'Country'
 
   scope :composers,         where(:composer => true)
   scope :pianists,          where(:performer => true)

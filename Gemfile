@@ -9,6 +9,8 @@ gem 'devise'
 gem 'draper'
 gem 'cancan'
 gem 'chosen-rails'
+gem 'spreadsheet'
+gem 'seed-fu', '~> 2.2.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
