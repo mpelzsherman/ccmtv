@@ -28,10 +28,10 @@
       %td= link_to person.canonical_name, [:admin, person]
       %td
         = person.date_of_birth
-        %em.quiet= "#{person.place_of_birth}, #{person.birth_country.name}"
+        %em.quiet= "#{person.birth_location}"
       %td
         = person.date_of_death
-        %em.quiet= "#{person.place_of_death}, #{person.death_country.name}"
+        %em.quiet= "#{person.death_location}"
       %td= link_to '<i class=icon-eye-open>'.html_safe, admin_person_path(person)
       %td= link_to '<i class=icon-list-alt>'.html_safe, edit_admin_person_path(person)
       %td= link_to '<i class=icon-remove>'.html_safe, admin_person_path(person), :confirm => 'Are you sure?', :method => :delete

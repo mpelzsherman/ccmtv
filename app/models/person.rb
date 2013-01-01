@@ -12,6 +12,20 @@ class Person < ActiveRecord::Base
   validates :canonical_name, :uniqueness => true, :presence => true, :length => {  :within => 2..200 }
   validate  :categorised?
 
+  def birth_location
+    parts = []
+    parts << place_of_birth unless place_of_birth.nil?
+    parts << birth_country.name unless birth_country.nil?
+    parts.join(', ')
+  end
+
+  def death_location
+    parts = []
+    parts << place_of_death unless place_of_death.nil?
+    parts << death_country.name unless death_country.nil?
+    parts.join(', ')
+  end
+
   def rank
     I18n.t(:na)
   end
