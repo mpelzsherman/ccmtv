@@ -15,7 +15,6 @@ class Admin::PeopleController < Admin::BaseController
 
   def new
     @person = Person.new
-    @person.epithets.build
   end
 
   def edit

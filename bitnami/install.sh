@@ -4,7 +4,7 @@ eval `ssh-agent`
 # Add EC2 private key to the agent (download from EC2 console under 'key pairs')
 # and place this file in the current directory
 # Alternatively, have somebody with access setup your own key pair
-ssh-add ./pianodb.pem
+ssh-add ./ccmtv.pem
 
 # If we've moved or started a new instance, this could change
 export EC2=ec2-54-245-136-251.us-west-2.compute.amazonaws.com

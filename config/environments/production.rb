@@ -1,4 +1,4 @@
-PianoDB::Application.configure do
+CCMTV::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -50,12 +50,12 @@ PianoDB::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'pianodb.com' }
+  config.action_mailer.default_url_options = { :host => 'ccmtv.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :address => 'mail.pianodb.com',
-    :user_name => 'do-not-reply@pianodb.com',
+    :address => 'mail.ccmtv.com',
+    :user_name => 'do-not-reply@ccmtv.com',
     :password => 'P3tr!chor',
     :authentication => :plain,
     :openssl_verify_mode => 'none',

@@ -1,23 +1,23 @@
 development:
   adapter: mysql2
-  database: pianodb_dev
-  username: pianodb
+  database: ccmtv_dev
+  username: ccmtv
   password: xxx
   pool: 5
   timeout: 5000
 
 test:
   adapter: mysql2
-  database: pianodb_test
-  username: pianodb
+  database: ccmtv_test
+  username: ccmtv
   password: xxx
   pool: 5
   timeout: 5000
 
 production:
   adapter: mysql2
-  database: pianodb_dev
-  username: pianodb
+  database: ccmtv
+  username: ccmtv
   password: xxx
   pool: 5
   timeout: 5000

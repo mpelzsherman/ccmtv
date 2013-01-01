@@ -11,7 +11,7 @@ set :default_environment, {
 }
 
 set :application, "pnodb"
-set :repository,  "git@github.com:yakloinsteak/pianodb.git"
+set :repository,  "git@github.com:mpelzsherman/ccmtv.git"
 set :user, 'bitnami'
 set :use_sudo, false
 set :deploy_to,  '/opt/bitnami/apps/pnodb'

@@ -1,6 +1,6 @@
 module ApplicationHelper
   def site_name
-    'PianoDB'
+    'CCMTV'
   end
 
   def page_title

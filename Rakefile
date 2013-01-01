@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-PianoDB::Application.load_tasks
+CCMTV::Application.load_tasks

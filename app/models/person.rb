@@ -1,8 +1,6 @@
 class Person < ActiveRecord::Base
   EARLIEST_YEAR = 1500
 
-  has_many :epithets
-  accepts_nested_attributes_for :epithets, :allow_destroy => true
   belongs_to :birth_country, :class_name => 'Country'
   belongs_to :death_country, :class_name => 'Country'
 

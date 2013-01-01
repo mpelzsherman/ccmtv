@@ -16,15 +16,3 @@
       = f.input :place_of_death
       = f.input :date_of_death, :start_year => Person::EARLIEST_YEAR
       = f.submit 'Save'
-    .span4
-      %fieldset.well
-        - @person.epithets.each do |epithet|
-          = f.simple_fields_for :epithets do |e|
-            = e.association :language
-            = e.input :title, :placeholder => '(e.g. Dr., Mr., Mrs.)'
-            = e.input :forename
-            = e.input :middle_name
-            = e.input :prefix
-            = e.input :surname
-            = e.input :suffix
-            = e.input :stage_name

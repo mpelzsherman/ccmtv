@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229000654) do
+ActiveRecord::Schema.define(:version => 20130101060441) do
+
+  create_table "compositions", :force => true do |t|
+    t.string  "title"
+    t.string  "comp_group",          :limit => 64
+    t.string  "movement_name",       :limit => 64
+    t.integer "movement_num",        :limit => 1
+    t.string  "catalog_num1",        :limit => 64
+    t.string  "catalog_num2",        :limit => 64
+    t.string  "catalog_num3",        :limit => 64
+    t.integer "year_composed_begin", :limit => 2
+    t.integer "year_composed_end",   :limit => 2
+    t.integer "person_id",                                        :null => false
+    t.float   "rating"
+    t.integer "rank",                              :default => 0
+    t.integer "views",                             :default => 0
+    t.date    "created_on"
+    t.date    "updated_on"
+  end
+
+  add_index "compositions", ["comp_group"], :name => "comp_group_idx"
+  add_index "compositions", ["person_id"], :name => "comp_person_id_idx"
+  add_index "compositions", ["title"], :name => "index_title_on_compositions"
 
   create_table "countries", :force => true do |t|
     t.string "name", :null => false
@@ -35,6 +57,35 @@ ActiveRecord::Schema.define(:version => 20121229000654) do
     t.datetime "created_on"
     t.datetime "updated_on"
   end
+
+  create_table "performances", :force => true do |t|
+    t.integer "composition_id",                                           :null => false
+    t.integer "performance_type_id",                                      :null => false
+    t.integer "url_id"
+    t.integer "person_id",                                                :null => false
+    t.integer "perf_year"
+    t.text    "notes",               :limit => 2147483647
+    t.float   "rating"
+    t.integer "rank",                                      :default => 0
+    t.integer "views",                                     :default => 0
+    t.date    "created_on"
+    t.date    "updated_on"
+  end
+
+  add_index "performances", ["composition_id"], :name => "performance_composition_id_idx"
+  add_index "performances", ["performance_type_id"], :name => "performance_performance_type_id_idx"
+  add_index "performances", ["person_id"], :name => "performance_person_id_idx"
+  add_index "performances", ["url_id"], :name => "performance_url_id_idx"
+
+  create_table "urls", :force => true do |t|
+    t.string  "anchor_text",   :limit => 32,   :null => false
+    t.string  "http",          :limit => 1024, :null => false
+    t.string  "embeded_code",  :limit => 2048
+    t.integer "url_type_id"
+    t.date    "last_verified"
+  end
+
+  add_index "urls", ["url_type_id"], :name => "url_url_type_id_idx"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

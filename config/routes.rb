@@ -1,4 +1,4 @@
-PianoDB::Application.routes.draw do
+CCMTV::Application.routes.draw do
 
   resources :performances, :compositions
 
