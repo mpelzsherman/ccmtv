@@ -12,14 +12,14 @@
   = @person.date_of_birth
 %p
   %b Birth location:
-  = @person.birth_location_id
+  = @person.birth_location
 %p
   %b Death location:
-  = @person.death_location_id
+  = @person.death_location
 %p
   %b Date of death:
   = @person.date_of_death
 
 = link_to 'Edit', edit_admin_person_path(@person)
 \|
-= link_to 'Back', admin_people_path
+= link_to 'Back', people_path
