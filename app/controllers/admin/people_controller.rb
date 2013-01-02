@@ -1,18 +1,6 @@
 class Admin::PeopleController < Admin::BaseController
   before_filter :load_person, :only => [:show, :edit, :update, :destroy]
 
-  def index
-    params[:person] ||= {}
-    params[:person][:composer]  ||= '1'
-    params[:person][:performer] ||= '1'
-
-    @people = Person.search(params[:person]).by_canonical_name.paginate(:page => params[:page])
-    @person = Person.new(params[:person])
-  end
-
-  def show
-  end
-
   def new
     @person = Person.new
   end

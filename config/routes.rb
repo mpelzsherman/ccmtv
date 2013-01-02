@@ -1,6 +1,6 @@
 CCMTV::Application.routes.draw do
 
-  resources :performances, :compositions
+  resources :performances, :compositions, :people
 
   devise_for :users
 
@@ -21,6 +21,6 @@ CCMTV::Application.routes.draw do
 
   root :to => 'site#top10'
 
-  match 'composers' => 'admin/people?composer=1'
-  match 'performers' => 'admin/people?performer=1'
+  match 'composers' => 'people#composers'
+  match 'performers' => 'people#performers'
 end
