@@ -22,7 +22,7 @@ ssh bitnami@$EC2
 
 scp ./database.yml bitnami@${EC2}:/home/bitnami/apps/ccmtv/shared/database.yml
 
-scp ./httpd-ccmtv.conf bitnami@${EC2}:/home/bitnami/stack/
+scp ./httpd-ccmtv.conf bitnami@${EC2}:/home/bitnami/stack/apache2/conf/extra
 
 ssh bitnami@$EC2
   vim ~/stack/apache2/conf/httpd.conf
