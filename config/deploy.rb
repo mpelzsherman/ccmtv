@@ -10,11 +10,11 @@ set :default_environment, {
   'PATH' => '/opt/bitnami/memcached/bin:/opt/bitnami/perl/bin:/opt/bitnami/git/bin:/opt/bitnami/nginx/sbin:/opt/bitnami/sphinx/bin:/opt/bitnami/sqlite/bin:/opt/bitnami/php/bin:/opt/bitnami/mysql/bin:/opt/bitnami/apache2/bin:/opt/bitnami/subversion/bin:/opt/bitnami/ruby/bin:/opt/bitnami/common/bin:/opt/bitnami/memcached/bin:/opt/bitnami/perl/bin:/opt/bitnami/git/bin:/opt/bitnami/nginx/sbin:/opt/bitnami/sphinx/bin:/opt/bitnami/sqlite/bin:/opt/bitnami/php/bin:/opt/bitnami/mysql/bin:/opt/bitnami/apache2/bin:/opt/bitnami/subversion/bin:/opt/bitnami/ruby/bin:/opt/bitnami/common/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games'
 }
 
-set :application, "pnodb"
+set :application, "ccmtv"
 set :repository,  "git@github.com:mpelzsherman/ccmtv.git"
 set :user, 'bitnami'
 set :use_sudo, false
-set :deploy_to,  '/opt/bitnami/apps/pnodb'
+set :deploy_to,  '/opt/bitnami/apps/ccmtv'
 set :scm, :git
 set :bundle_cmd, '/opt/bitnami/ruby/bin/bundle'
 

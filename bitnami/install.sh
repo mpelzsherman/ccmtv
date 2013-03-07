@@ -1,3 +1,4 @@
+# NOTE: This script is
 # Start SSH agent
 eval `ssh-agent`
 
@@ -13,28 +14,26 @@ export EC2=ec2-54-245-136-251.us-west-2.compute.amazonaws.com
 scp ./.tmux.conf bitnami@${EC2}:/home/bitnami/.tmux.conf
 
 ssh bitnami@$EC2
-  sudo mkdir /home/bitnami/apps/pnodb
-  sudo chown bitnami:daemon /home/bitnami/apps/pnodb
+  sudo mkdir /home/bitnami/apps/ccmtv
+  sudo chown bitnami:daemon /home/bitnami/apps/ccmtv
   sudo apt-get --yes install git
   sudo gem install bundler
   echo 'export RAILS_ENV=production' >> ~/.bashrc
 
-scp ./database.yml bitnami@${EC2}:/home/bitnami/apps/pnodb/shared/database.yml
+scp ./database.yml bitnami@${EC2}:/home/bitnami/apps/ccmtv/shared/database.yml
 
-scp ./httpd-pnodb.conf bitnami@${EC2}:/home/bitnami/stack/
+scp ./httpd-ccmtv.conf bitnami@${EC2}:/home/bitnami/stack/
 
 ssh bitnami@$EC2
   vim ~/stack/apache2/conf/httpd.conf
     # Add these...
     SetEnv RAILS_ENV production
-    Include conf/extra/httpd-pnodb.conf
+    Include conf/extra/httpd-ccmtv.conf
   cd ~/stack
   sudo ./ctlscript.sh restart
-  cd ~/apps/pnodb/current
-  rails db -p
-    source db/seed.sql
-    exit
-  rake db:migrate
+  cd ~/apps/ccmtv/current
+  rake db:setup
+  rake db:seed_fu
 
 # Hack /etc/hosts on your computer:
-sudo echo '54.245.136.251 pnodb.com' >> /etc/hosts
+sudo echo '54.245.136.251 ccmtv.com' >> /etc/hosts
