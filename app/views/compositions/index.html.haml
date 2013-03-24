@@ -36,7 +36,6 @@
         = composition.year_composed_begin
         to
         = composition.year_composed_end
-      %td= composition.musical_key_id
       %td= link_to composition.composer.canonical_name, admin_person_path(composition.composer)
       %td= composition.rating
       %td= composition.rank
