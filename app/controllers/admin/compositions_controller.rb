@@ -13,6 +13,7 @@ class Admin::CompositionsController < Admin::BaseController
   end
 
   def new
+    authorize! if can? :create,:compositions
     @composition = Composition.new
   end
 

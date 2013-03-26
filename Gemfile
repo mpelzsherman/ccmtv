@@ -41,4 +41,6 @@ group :development do
   gem 'capistrano'
   gem 'capistrano_colors'
   gem 'bullet'
+  gem 'hpricot'
+  gem 'ruby_parser'
 end

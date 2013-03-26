@@ -1,5 +1,8 @@
--#todo: make admin/performances use this same view?
 %h1 Performances
+
+- if can? :create, :performance
+  = link_to 'Create New Performance', new_admin_performance_path, :class => 'btn btn-small'
+  %p
 
 = will_paginate(@performances)
 
@@ -23,12 +26,11 @@
       %td= performance.performer_link
       -#todo: wrap these in permissions using cancan
       %td= link_to 'Show', performance_path(performance)
-      %td= link_to 'Edit', edit_admin_performance_path(performance)
-      %td= link_to 'Destroy', admin_performance_path(performance), :confirm => 'Are you sure?', :method => :delete
+      - if can? :edit, :performance
+        %td= link_to 'Edit', edit_admin_performance_path(performance)
+      - if can? :delete, :performance
+        %td= link_to 'Delete', admin_performance_path(performance), :confirm => 'Are you sure?', :method => :delete
 
 %br
 
 = will_paginate(@performances)
-
--#todo: wrap this in permissions using cancan
-= link_to 'Create New Performance', new_admin_performance_path, :class => 'btn btn-small'

@@ -1,5 +1,8 @@
 %h1 Compositions
-.btn= link_to 'New Composition', new_admin_composition_path
+
+- if can? :edit, :compositions
+  = link_to 'Create New Composition', new_admin_composition_path, :class => 'btn btn-small'
+  %p
 
 = will_paginate(@compositions)
 
@@ -40,9 +43,11 @@
       %td= composition.rating
       %td= composition.rank
       %td= composition.views
-      %td= link_to 'S', admin_composition_path(composition)
-      %td= link_to 'E', edit_admin_composition_path(composition)
-      %td= link_to 'D', admin_composition_path(composition), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', admin_composition_path(composition)
+      - if can? :edit, :compositions
+        %td= link_to 'Edit', edit_admin_composition_path(composition)
+      - if can? :delete, :compositions
+        %td= link_to 'Delete', admin_composition_path(composition), :confirm => 'Are you sure?', :method => :delete
 
 %br
 

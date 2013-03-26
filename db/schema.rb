@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101073234) do
+ActiveRecord::Schema.define(:version => 20130326034502) do
 
   create_table "compositions", :force => true do |t|
     t.string  "title"
@@ -81,8 +81,18 @@ ActiveRecord::Schema.define(:version => 20130101073234) do
   add_index "performances", ["person_id"], :name => "performance_person_id_idx"
   add_index "performances", ["url_id"], :name => "performance_url_id_idx"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
   create_table "urls", :force => true do |t|
-    t.string  "anchor_text",   :limit => 32,   :null => false
     t.string  "http",          :limit => 1024, :null => false
     t.string  "embeded_code",  :limit => 2048
     t.integer "url_type_id"

@@ -22,9 +22,7 @@
   = f.fields_for :url do |b|
     %div.span4
       %fieldset.well
-        = b.label 'Anchor Text'
-        = b.text_field :anchor_text
-        = b.label 'HTTP'
+        = b.label 'URL'
         = b.text_field :http, {:class => 'input-large'}
         = b.label 'Embed Code'
         = b.text_area :embeded_code

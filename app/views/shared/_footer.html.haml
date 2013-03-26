@@ -6,10 +6,12 @@
           %ul
             %li
               %a{:href => "#"} Home
-            %li
-              %a{:href => "#"} Add a Composition
-            %li
-              %a{:href => "#"} Add a Performance
+            - if can? :create, :composition
+              %li
+                = link_to 'Add a Composition', new_admin_composition_path
+            - if can? :create, :performance
+              %li
+                = link_to 'Add a Performance', new_admin_performance_path
             %li
               %a{:href => "#"} FAQ
             %li
