@@ -1,5 +1,6 @@
 %h1
   Composers
-  = link_to 'Create New Composer', new_admin_person_path, :class => 'btn btn-small'
+  - if can? :create, :person
+    = link_to 'Create New Composer', new_admin_person_path, :class => 'btn btn-small'
 
 =render 'index'
