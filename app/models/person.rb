@@ -4,8 +4,8 @@ class Person < ActiveRecord::Base
   belongs_to :birth_country, :class_name => 'Country'
   belongs_to :death_country, :class_name => 'Country'
 
-  scope :composers,         where(:composer => true)
-  scope :pianists,          where(:performer => true)
+  scope :composers,         where(person_type: :composer)
+  scope :performers,        where(person_type: :performer)
   scope :top10,             limit(10)
   scope :by_canonical_name, order(:canonical_name)
 
@@ -36,10 +36,17 @@ class Person < ActiveRecord::Base
 
   def self.search params={}
     skope = scoped
-    skope = skope.where(:composer  => params[:composer]=='1')  unless params[:composer].blank?
-    skope = skope.where(:performer => params[:performer]=='1') unless params[:performer].blank?
+    skope = skope.where(["person_type = ?", params[:person_type]]) unless params[:person_type].blank?
     skope = skope.where(["canonical_name like ?", '%'+params[:canonical_name].downcase+'%']) unless params[:canonical_name].blank?
     skope
+  end
+
+  def composer?
+    person_type == :composer
+  end
+
+  def performer?
+    person_type == :performer
   end
 
   private

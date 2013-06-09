@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326034502) do
+ActiveRecord::Schema.define(:version => 20130406234944) do
 
   create_table "compositions", :force => true do |t|
     t.string  "title"
@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(:version => 20130326034502) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "stage_name"
-    t.boolean  "composer",         :default => false, :null => false
-    t.boolean  "performer",        :default => false, :null => false
     t.date     "date_of_birth"
     t.integer  "birth_country_id"
     t.string   "place_of_birth"
@@ -56,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130326034502) do
     t.string   "website_url"
     t.datetime "created_on"
     t.datetime "updated_on"
+    t.string   "person_type"
   end
 
   create_table "performance_types", :force => true do |t|
