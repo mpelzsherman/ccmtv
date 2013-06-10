@@ -9,8 +9,7 @@
   .row-fluid
     .span8
       = f.input :canonical_name
-      = f.input :composer
-      = f.input :performer
+      = f.input :person_type
       = f.input :date_of_birth, :start_year => Person::EARLIEST_YEAR
       = f.input :place_of_birth
       = f.input :place_of_death

@@ -1,1 +1,5 @@
-../../compositions/show.html.haml
+=render "shared/composition"
+
+= link_to 'Edit', edit_admin_composition_path(@composition)
+\|
+= link_to 'Back', admin_compositions_path

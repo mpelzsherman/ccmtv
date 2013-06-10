@@ -16,7 +16,7 @@ class PerformanceDecorator < ApplicationDecorator
   end
 
   def performer_link
-    h.link_to model.performer.canonical_name, h.admin_person_path(model.performer)
+    h.link_to model.performer.canonical_name, h.person_path(model.performer)
   end
 
   def label_type
@@ -27,5 +27,11 @@ class PerformanceDecorator < ApplicationDecorator
     when 'audioscore' then 'inverse'
     else ''
     end
+  end
+
+  def composition_link
+    h.link_to(model.composition.title, h.composition_path(model.composition)) +
+        ' by ' +
+    h.link_to(model.composition.composer.canonical_name, h.person_path(model.composition.composer))
   end
 end

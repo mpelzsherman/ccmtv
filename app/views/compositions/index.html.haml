@@ -15,19 +15,17 @@
     %th Movement num
     %th Catalog
     %th Composed
-    %th Musical key
     %th Person
     %th Rating
     %th Rank
     %th Views
     %th
     %th
-    %th
 
   - @compositions.each do |composition|
     %tr
       %td= composition.id
-      %td= composition.title
+      %td= composition.title_link
       %td= composition.comp_group
       %td= composition.movement_name
       %td= composition.movement_num
@@ -43,12 +41,8 @@
       %td= composition.rating
       %td= composition.rank
       %td= composition.views
-      %td= link_to 'Show', admin_composition_path(composition)
-      - if can? :edit, :compositions
-        %td= link_to 'Edit', edit_admin_composition_path(composition)
-      - if can? :delete, :compositions
-        %td= link_to 'Delete', admin_composition_path(composition), :confirm => 'Are you sure?', :method => :delete
-
+      %td= link_to 'Edit', edit_admin_composition_path(composition) if can? :edit, :compositions
+      %td= link_to 'Delete', admin_composition_path(composition), :confirm => 'Are you sure?', :method => :delete if can? :delete, :compositions
 %br
 
 = will_paginate(@compositions)

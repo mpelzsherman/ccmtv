@@ -24,7 +24,6 @@
       %td= performance.type_name
       %td= performance.url_link
       %td= performance.performer_link
-      -#todo: wrap these in permissions using cancan
       %td= link_to 'Show', performance_path(performance)
       - if can? :edit, :performance
         %td= link_to 'Edit', edit_admin_performance_path(performance)

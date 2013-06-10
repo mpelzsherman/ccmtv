@@ -12,6 +12,10 @@ class CompositionDecorator < ApplicationDecorator
     }
   end
 
+  def title_link
+    h.link_to(model.title, h.composition_path(model))
+  end
+
   # Accessing Helpers
   #   You can access any helper via a proxy
   #
