@@ -9,13 +9,11 @@ In the early 1990's, while I was a graduate student at UC San Diego's School of 
 
 I was interested in learning Ruby on Rails, and I thought working on this project would be a good way to improve my skills.
 
-The project was started by @yakloinsteak, who did a great job getting the basic architecture set up. CCMTV has been simmering on the back burner for a long time. I've enjoyed tinkering with it on and off, but since it is completely unfunded, it's been taking a back seat to my day job, music projects, and family commitments. We are currently seeking developers to help us improve the site.
+The project was started by [@yakloinsteak](https://github.com/yakloinsteak), who did a great job setting up the basic architecture. Preeti Gupta <guptapreeti.india@gmail.com> helped improve the site color scheme and layout. CCMTV has been simmering on the back burner for a while. I've enjoyed tinkering with it on and off, but since it is completely unfunded at the moment, it's been taking a back seat to my day job, music projects, and family commitments. We are currently seeking developers to help us improve the site. The hope is to get the site to a useable state, start gathering a critical mass of data, then seek crowdsource funding for further enhancements.
 
-The code is basically functional, but there are many improvements to be made, and bugs to be fixed. I'm sorry to say that the rspec tests have not been kept up to date. The data entry process requires too many steps and needs to be streamlined. There is also a need to build out the moderation process for edits. Currently the "admin" role is granted to anyone who registers.
+The code is basically functional now, but there are many improvements to be made, and bugs to be fixed. I'm sorry to say that the rspec tests have not been kept up to date as there have been many changes to the data model. The data entry process requires too many steps and needs to be streamlined. There is also a need to build out a moderation process for content editors. Currently the "admin" role is granted to anyone who registers.
 
-The general plan is to get the site 
-
-It is hosted on Amazon EC2 using Bitnami, and available at http://ccmtv.cc.
+CCMTV is hosted on Amazon EC2 using Bitnami, and available at http://ccmtv.cc.
 
 Getting started
 ----------------
@@ -28,6 +26,6 @@ Getting started
 	rake db:seed_fu
 	
 4. `rails s` to start the server
-5. `rspec spec` to run the tests. (Many are broken. Help me fix 'em!)
+5. `rspec spec` to run the tests. (Many are broken. Help us fix 'em!)
 
 The app uses the [devise](https://github.com/plataformatec/devise) gem for managing user accounts, and [cancan](https://github.com/ryanb/cancan) for handling authorization. 
