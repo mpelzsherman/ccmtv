@@ -7,6 +7,12 @@
 %h2
   Performed by
   =@performance.performer.canonical_name
+
+%ul
+  -@performance.performance_roles.each do |r|
+    %li
+      ="#{r.person.canonical_name}: #{r.role_name}"
+
 .well
   !=@performance.url.embeded_code
 

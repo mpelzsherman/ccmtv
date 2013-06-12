@@ -8,6 +8,8 @@ class Performance < ActiveRecord::Base
   has_and_belongs_to_many :urls
   scope :top10, limit(10)
   accepts_nested_attributes_for :composer, :performer, :url
+  has_many :performance_roles, :dependent => :destroy
+  accepts_nested_attributes_for :performance_roles
 
   validates :composition, :presence => true
   validates :performer, :presence => true

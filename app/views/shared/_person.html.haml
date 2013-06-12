@@ -1,8 +1,9 @@
+%h2 Info
 %p
   %b Canonical name:
   = @person.canonical_name
 %p
-  %b Role:
+  %b Primary Role:
   = @person.person_type
 %p
   %b Date of birth:
@@ -16,3 +17,9 @@
 %p
   %b Date of death:
   = @person.date_of_death
+
+%h2 Roles
+%ul
+  -@person.performance_roles.each do |r|
+    %li
+      ="#{r.performance.composition.title}: #{r.role_name}"

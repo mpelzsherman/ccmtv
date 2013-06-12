@@ -1,8 +1,11 @@
 class Person < ActiveRecord::Base
   EARLIEST_YEAR = 1500
 
+  attr_accessible :person_type, :canonical_name
+
   belongs_to :birth_country, :class_name => 'Country'
   belongs_to :death_country, :class_name => 'Country'
+  has_many :performance_roles
 
   scope :composers,         where(person_type: :composer)
   scope :performers,        where(person_type: :performer)
@@ -52,6 +55,6 @@ class Person < ActiveRecord::Base
   private
 
   def categorised?
-    errors[:base] << I18n.t(:either_composer_or_performer) unless composer || performer
+    errors[:base] << I18n.t(:either_composer_or_performer) unless composer? || performer?
   end
 end

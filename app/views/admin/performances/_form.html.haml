@@ -6,8 +6,8 @@
         - @performance.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.label 'Performer'
-  = collection_select(:performance, :person_id, Person.pianists.order('canonical_name'), :id,
+  = f.label 'Main Performer'
+  = collection_select(:performance, :person_id, Person.performers.order('canonical_name'), :id,
                       :canonical_name, {:prompt => 'Select a Performer'}, {:class => "chzn-select"})
 
   = f.label :composition_tokens, 'Composition'
@@ -32,6 +32,13 @@
         !=@performance.url.embeded_code
 
   .clearfix
+
+  %h1 Additional Roles
+  = f.fields_for :performance_roles do |b|
+    = collection_select(:performance_role, :person_id, Person.by_canonical_name, :id,
+                      :canonical_name, {:prompt => 'Select a Person', :class => "chzn-select"})
+    = b.label 'Role'
+    = b.text_field :role_name
 
   .actions
     = f.submit 'Save'
