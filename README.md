@@ -11,9 +11,9 @@ I was interested in learning Ruby on Rails, and I thought working on this projec
 
 The project was started by [@yakloinsteak](https://github.com/yakloinsteak), who did a great job setting up the basic architecture. Preeti Gupta <guptapreeti.india@gmail.com> helped redesign the site color scheme and layout.
 
-CCMTV has been simmering on the back burner for a while. I've enjoyed tinkering with it on and off, but since it is completely unfunded at the moment, it's been taking a back seat to my day job, music projects, and family commitments. We are currently seeking Ruby developers to help us improve the site. The hope is to get the site to a useable state, start gathering a critical mass of data, then seek crowdsource funding for further enhancements.
+CCMTV has been simmering on the back burner for a while. I've enjoyed tinkering with it on and off, but since it is completely unfunded at the moment, it's been taking a back seat to my day job, music projects, and family commitments. We are currently seeking Ruby developers to help us improve the site. The hope is to get the site to a useable state, start gathering a critical mass of data, then seek crowdsource funding for further enhancements (e.g. adding "social" features such as Facebook/Spotify integration, a recommendation engine, etc.).
 
-The code is basically functional now, but there are many improvements to be made, and bugs to be fixed. I'm sorry to say that the rspec tests have not been kept up to date as there have been many changes to the data model. The data entry process requires too many steps and needs to be streamlined. There is also a need to build out a moderation process for content editors. (Currently the "admin" role is granted to anyone who registers.) Etc., etc.
+The code is basically functional now, but there are many improvements to be made, and bugs to be fixed. The rspec tests have not been kept up to date as there have been many changes to the data model. The data entry process requires too many steps and needs to be streamlined. There is also a need to build out a moderation process for content editors. (Currently the "admin" role is granted to anyone who registers.) Etc., etc.
 
 CCMTV is hosted on Amazon EC2 using Bitnami, and available at http://ccmtv.cc, or http://54.245.111.127.
 
