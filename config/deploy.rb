@@ -1,7 +1,7 @@
 # Do an `ssh-add` with the key you use for git before deployment
 # Try `gem install capistrano_colors` if you like and require it in your ~/.caprc file.
 
-ENV['EC2'] ||= 'ec2-54-245-136-251.us-west-2.compute.amazonaws.com'
+ENV['EC2'] ||= 'ec2-54-218-239-177.us-west-2.compute.amazonaws.com'
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
