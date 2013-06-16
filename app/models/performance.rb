@@ -1,5 +1,5 @@
 class Performance < ActiveRecord::Base
-  attr_accessible  :composition_tokens, :performance_type_id, :composition_id, :person_id, :url_attributes
+  attr_accessible  :composition_tokens, :performance_type_id, :composition_id, :person_id, :url_attributes, :performer_attributes
   belongs_to :composition
   has_one    :composer, :through => :composition
   belongs_to :performance_type

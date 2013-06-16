@@ -9,10 +9,16 @@
   = f.label 'Main Performer'
   = collection_select(:performance, :person_id, Person.performers.order('canonical_name'), :id,
                       :canonical_name, {:prompt => 'Select a Performer'}, {:class => "chzn-select"})
+  - if can? :create, :person
+    %a#create_performer{href:'javascript:void(0)'} Create New Performer
+    #performer_fields
 
   = f.label :composition_tokens, 'Composition'
   = f.text_field :composition_tokens,
   { 'data' => @performance.composition ? { :load => CompositionDecorator.decorate([@performance.composition]) } : {} }
+  - if can? :create, :composition
+    &nbsp;
+    = link_to 'Create New Composition', new_admin_composition_path, :class => 'btn btn-small'
 
   = f.label 'Performance Type'
   = collection_select(:performance, :performance_type_id, PerformanceType.order('name'), :id,

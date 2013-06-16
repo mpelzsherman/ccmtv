@@ -10,6 +10,7 @@ class Admin::PerformancesController < Admin::BaseController
   def new
     @performance = Performance.new
     @performance.url = Url.new
+    @performance.performer = Person.new(person_type: 'performer')
   end
 
   def edit

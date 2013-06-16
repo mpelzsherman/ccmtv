@@ -5,10 +5,6 @@
       %ul
         - @composition.errors.full_messages.each do |msg|
           %li= msg
-  -#Why do we have a "title" table?
-  -#.field
-  -#  = f.label :title_id
-  -#  = f.number_field :title_id
   .field
     = f.label :title
     = f.text_field :title

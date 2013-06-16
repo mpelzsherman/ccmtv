@@ -1,6 +1,10 @@
 class Admin::PeopleController < Admin::BaseController
   before_filter :load_person, :only => [:show, :edit, :update, :destroy]
 
+  def index
+    redirect_to people_path
+  end
+
   def new
     @person = Person.new
   end

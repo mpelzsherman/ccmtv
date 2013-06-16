@@ -13,7 +13,7 @@ class Person < ActiveRecord::Base
   scope :by_canonical_name, order(:canonical_name)
 
   validates :canonical_name, :uniqueness => true, :presence => true, :length => {  :within => 2..200 }
-  validate  :categorised?
+  validates :person_type, presence: true
 
   def birth_location
     parts = []
@@ -52,9 +52,4 @@ class Person < ActiveRecord::Base
     person_type == :performer
   end
 
-  private
-
-  def categorised?
-    errors[:base] << I18n.t(:either_composer_or_performer) unless composer? || performer?
-  end
 end

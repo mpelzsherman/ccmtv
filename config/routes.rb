@@ -12,9 +12,7 @@ CCMTV::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :compositions
-    resources :people
-    resources :performances
+    resources :compositions, :people, :performances
   end
 
   match 'top10' => 'site#top10'

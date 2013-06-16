@@ -54,7 +54,7 @@ h1{
     line-height: 22px;
 }
 h2{
-		color: #FCE796;
+    color: #fc4308;
     font-size: 20px;
     margin-bottom: 15px;
     line-height: 20px;
@@ -98,12 +98,11 @@ p{
 
 /* Link Styles */
 a{
-    color: #E89E1A;
     text-decoration: none;
 }
 a:hover{
     text-decoration: none;
-    color: #FCE796;}
+}
 
 .title a{
     color: #E89E1A;
@@ -115,8 +114,6 @@ h4.title a{
     font-weight:400;
     letter-spacing: 0.05em;
 }
-.title a:hover{color: #FCE796;}
-
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -1559,4 +1556,7 @@ blockquote p{
     }
     #footer .submit-div {width:225px;}
 
+}
+
+.performance_composition_formm {
 }
