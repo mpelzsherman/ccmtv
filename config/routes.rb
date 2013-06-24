@@ -13,6 +13,7 @@ CCMTV::Application.routes.draw do
 
   namespace :admin do
     resources :compositions, :people, :performances
+    match 'new_composition_ajax' => 'compositions#new_comp_ajax'
   end
 
   match 'top10' => 'site#top10'
@@ -21,4 +22,5 @@ CCMTV::Application.routes.draw do
 
   match 'composers' => 'people#composers'
   match 'performers' => 'people#performers'
+
 end

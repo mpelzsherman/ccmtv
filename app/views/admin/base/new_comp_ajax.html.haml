@@ -1,0 +1,15 @@
+.clearfix
+.field
+  .label Title
+  %input{type: :text, size: 40, name: 'performance[composition_attributes][title]'}
+.field
+  .label Composer
+  = collection_select('performance[composition_attributes]', :person_id, Person.composers.order('canonical_name'), :id,
+                      :canonical_name, {:prompt => 'Select a Composer'}, {:class => "chzn-select"})
+.field
+  .label Year Composed - Begin
+  %input{type: :text, name: 'performance[composition_attributes][year_composed_begin]'}
+
+.field
+  .label Year Composed - End
+  %input{type: :text, name: 'performance[composition_attributes][year_composed_end]'}

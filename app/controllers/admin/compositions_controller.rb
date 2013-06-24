@@ -3,8 +3,9 @@ class Admin::CompositionsController < Admin::BaseController
     @compositions = Composition.includes(:composer).paginate(:page => params[:page]||1)
     respond_to do |format|
       format.html
-      format.json { render :json => CompositionDecorator.decorate(@compositions.where("title like ?",
-                                                                                    "%#{params[:q]}%")) }
+      format.json do
+        render :json => CompositionDecorator.decorate(@compositions.where("title like ?", "%#{params[:q]}%"))
+      end
     end
   end
 
@@ -15,6 +16,11 @@ class Admin::CompositionsController < Admin::BaseController
   def new
     authorize! :create, :compositions
     @composition = Composition.new
+  end
+
+  def new_comp_ajax
+    authorize! :create, :compositions
+    render layout: 'bare'
   end
 
   def edit
