@@ -13,37 +13,10 @@
     = collection_select(:composition, :person_id, Person.composers.order('canonical_name'), :id,
                         :canonical_name, {:prompt => 'Select a Composer'}, {:class => "chzn-select"})
   .field
-    = f.label :comp_group
-    = f.text_field :comp_group
-  .field
-    = f.label :movement_name
-    = f.text_field :movement_name
-  .field
-    = f.label :movement_num
-    = f.text_field :movement_num
-  .field
-    = f.label :catalog_num1
-    = f.text_field :catalog_num1
-  .field
-    = f.label :catalog_num2
-    = f.text_field :catalog_num2
-  .field
-    = f.label :catalog_num3
-    = f.text_field :catalog_num3
-  .field
     = f.label :year_composed_begin
     = f.text_field :year_composed_begin
   .field
     = f.label :year_composed_end
     = f.text_field :year_composed_end
-  .field
-    = f.label :rating
-    = f.text_field :rating
-  .field
-    = f.label :rank
-    = f.text_field :rank
-  .field
-    = f.label :views
-    = f.text_field :views
   .actions
     = f.submit 'Save'
