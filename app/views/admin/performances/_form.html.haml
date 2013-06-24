@@ -6,20 +6,22 @@
         - @performance.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.label 'Select Main Performer'
-  = collection_select(:performance, :person_id, Person.performers.order('canonical_name'), :id,
-                      :canonical_name, {:prompt => 'Select a Performer'}, {:class => "chzn-select"})
-  - if can? :create, :person
-    %a#create_performer{href:'javascript:void(0)'} Create New Performer
-    #performer_fields
+  #create_performer
+    = f.label 'Select Main Performer'
+    = collection_select(:performance, :person_id, Person.performers.order('canonical_name'), :id,
+                        :canonical_name, {:prompt => 'Select a Performer'}, {:class => "chzn-select"})
+    - if can? :create, :person
+      %a#create_performer_link{href:'javascript:void(0)'} Create New Performer
+  #performer_fields
 
-  = f.label :composition_tokens, 'Select Composition'
-  = f.text_field :composition_tokens,
-  { 'data' => @performance.composition.id.nil? ? {} : {:load => CompositionDecorator.decorate([@performance.composition])} }
-  - if can? :create, :composition
-    &nbsp;
-    %a#create_composition{href:'javascript:void(0)'} Create New Composition
-    #composition_fields
+  #create_composition
+    = f.label :composition_tokens, 'Select Composition'
+    = f.text_field :composition_tokens,
+    { 'data' => @performance.composition.id.nil? ? {} : {:load => CompositionDecorator.decorate([@performance.composition])} }
+    - if can? :create, :composition
+      &nbsp;
+      %a#create_composition_link{href:'javascript:void(0)'} Create New Composition
+  #composition_fields
 
   .clearfix
 
