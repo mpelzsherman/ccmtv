@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610033609) do
+ActiveRecord::Schema.define(:version => 20130625015747) do
 
   create_table "compositions", :force => true do |t|
     t.string  "title"
@@ -72,13 +72,13 @@ ActiveRecord::Schema.define(:version => 20130610033609) do
     t.integer "performance_type_id",                                      :null => false
     t.integer "url_id"
     t.integer "person_id",                                                :null => false
-    t.integer "perf_year"
     t.text    "notes",               :limit => 2147483647
     t.float   "rating"
     t.integer "rank",                                      :default => 0
     t.integer "views",                                     :default => 0
     t.date    "created_on"
     t.date    "updated_on"
+    t.date    "perf_date"
   end
 
   add_index "performances", ["composition_id"], :name => "performance_composition_id_idx"

@@ -18,7 +18,21 @@
   %b Date of death:
   = @person.date_of_death
 
-%h2 Roles
+- if @person.performer?
+  %h2 Performances
+  %ul
+    -@person.performances.each do |p|
+      %li
+        = link_to "#{p.composition.title} (#{p.perf_date})", performance_path(p)
+
+- if @person.composer?
+  %h2 Compositions
+  %ul
+    -@person.compositions.each do |c|
+      %li
+        = link_to c.title, composition_path(c)
+
+%h2 Other Roles
 %ul
   -@person.performance_roles.each do |r|
     %li

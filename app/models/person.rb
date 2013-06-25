@@ -5,6 +5,8 @@ class Person < ActiveRecord::Base
 
   belongs_to :birth_country, :class_name => 'Country'
   belongs_to :death_country, :class_name => 'Country'
+  has_many :performances
+  has_many :compositions
   has_many :performance_roles
 
   scope :composers,         where(person_type: :composer)
@@ -45,11 +47,11 @@ class Person < ActiveRecord::Base
   end
 
   def composer?
-    person_type == :composer
+    person_type == 'composer'
   end
 
   def performer?
-    person_type == :performer
+    person_type == 'performer'
   end
 
 end
