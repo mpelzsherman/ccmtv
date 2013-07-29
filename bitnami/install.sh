@@ -8,7 +8,7 @@ eval `ssh-agent`
 ssh-add ./ccmtv.pem
 
 # If we've moved or started a new instance, this could change
-export EC2=ec2-54-245-136-251.us-west-2.compute.amazonaws.com
+export EC2=54.245.111.127
 
 # What I consider mandatory rc files for the bitnami user
 scp ./.tmux.conf bitnami@${EC2}:/home/bitnami/.tmux.conf
@@ -36,4 +36,4 @@ ssh bitnami@$EC2
   rake db:seed_fu
 
 # Hack /etc/hosts on your computer:
-sudo echo '54.245.136.251 ccmtv.com' >> /etc/hosts
+sudo echo '54.245.111.127 ccmtv.com' >> /etc/hosts
