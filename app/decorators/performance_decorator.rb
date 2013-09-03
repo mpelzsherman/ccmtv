@@ -2,7 +2,8 @@ class PerformanceDecorator < ApplicationDecorator
   decorates :performance
 
   def full_title
-    model.performer.canonical_name +  ' performs ' + model.composer.canonical_name + "'s " + model.composition.title
+    performer = model.performer.nil? ? 'Unknown' : model.performer.canonical_name
+    "#{performer} performs #{model.composer.canonical_name}'s #{model.composition.title}"
   end
 
   def url_link

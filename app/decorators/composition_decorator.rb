@@ -2,7 +2,7 @@ class CompositionDecorator < ApplicationDecorator
   decorates :composition
 
   def full_title
-    model.title + ' by ' + model.composer.canonical_name
+    "#{model.title} by #{model.composer.canonical_name}"
   end
 
   def as_json(*args)
