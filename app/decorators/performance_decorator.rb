@@ -16,6 +16,7 @@ class PerformanceDecorator < ApplicationDecorator
   end
 
   def performer_link
+    return '' unless model.performer
     h.link_to model.performer.canonical_name, h.person_path(model.performer)
   end
 

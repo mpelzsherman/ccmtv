@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625015747) do
+ActiveRecord::Schema.define(:version => 20130903020918) do
 
   create_table "compositions", :force => true do |t|
     t.string  "title"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20130625015747) do
     t.integer "composition_id",                                           :null => false
     t.integer "performance_type_id",                                      :null => false
     t.integer "url_id"
-    t.integer "person_id",                                                :null => false
+    t.integer "person_id"
     t.text    "notes",               :limit => 2147483647
     t.float   "rating"
     t.integer "rank",                                      :default => 0

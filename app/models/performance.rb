@@ -12,10 +12,10 @@ class Performance < ActiveRecord::Base
   accepts_nested_attributes_for :performance_roles
 
   validates :composition, :presence => true
-  validates :performer, :presence => true
+  validates :performance_type, :presence => true
   validates :url, :presence => true
 
-  # Using jQuery tokenInput plugin. See http://railscasts.com/episodes/258-token-fields
+  # Using jQuery tokenInrput plugin. See http://railscasts.com/episodes/258-token-fields
   attr_reader :composition_tokens
 
   # setter method
