@@ -6,7 +6,7 @@
   #{@performance.composition.title}, by #{@performance.composer.canonical_name}
 %h2
   Performed by
-  =@performance.performer.canonical_name
+  =@performance.performer.nil? ? 'Unknown' : @performance.performer.canonical_name
 
 %ul
   -@performance.performance_roles.each do |r|
