@@ -1,3 +1,9 @@
 = link_to 'Edit', edit_admin_performance_path(@admin_performance)
 \|
 = link_to 'Back', admin_performances_path
+
+- if can? :create, :performance
+  %p
+  .container
+    .span12
+    = link_to 'Create New Performance', new_admin_performance_path, :class => 'btn btn-small'
