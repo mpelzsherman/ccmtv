@@ -43,3 +43,8 @@
   %b Views:
   = @composition.views
 
+%h2 Performances
+%ul
+  -@composition.performances.each do |p|
+    %li
+      = link_to "#{p.composition.title} (#{p.perf_date})", performance_path(p)
