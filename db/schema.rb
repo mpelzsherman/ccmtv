@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903020918) do
+ActiveRecord::Schema.define(:version => 20130915172508) do
 
-  create_table "compositions", :force => true do |t|
+  create_table "COMPOSITIONS", :force => true do |t|
     t.string  "title"
     t.string  "comp_group",          :limit => 64
     t.string  "movement_name",       :limit => 64

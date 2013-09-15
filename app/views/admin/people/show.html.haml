@@ -3,3 +3,6 @@
 = link_to 'Edit', edit_admin_person_path(@person)
 \|
 = link_to 'Back', people_path
+%p
+- if can? :create, :person
+  = link_to 'Create New Person', new_admin_person_path, :class => 'btn btn-small'
