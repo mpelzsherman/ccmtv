@@ -32,8 +32,9 @@
       %li
         = link_to c.title, composition_path(c)
 
-%h2 Other Roles
-%ul
-  -@person.performance_roles.each do |r|
-    %li
-      ="#{r.performance.composition.title}: #{r.role_name}"
+- if @person.performance_roles.exists?
+  %h2 Other Roles
+  %ul
+    -@person.performance_roles.each do |r|
+      %li
+        ="#{r.performance.composition.title}: #{r.role_name}"
