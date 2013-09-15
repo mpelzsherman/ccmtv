@@ -41,7 +41,7 @@ class Person < ActiveRecord::Base
 
   # TODO: improve abstraction for groups. add drop down to person form.
   def self.expanded_types(type)
-    case type
+    case type.to_sym
     when :performer
       "performer|ensemble|orchestra"
     when :composer
