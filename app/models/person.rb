@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
   EARLIEST_YEAR = 1500
 
-  attr_accessible :person_type, :canonical_name
+  attr_accessible :person_type, :canonical_name, :date_of_birth, :date_of_death, :place_of_birth, :place_of_death
 
   belongs_to :birth_country, :class_name => 'Country'
   belongs_to :death_country, :class_name => 'Country'
@@ -39,10 +39,20 @@ class Person < ActiveRecord::Base
     I18n.t(:na)
   end
 
+  # TODO: improve abstraction for groups. add drop down to person form.
+  def self.expanded_types(type)
+    case type
+    when :performer
+      "performer|ensemble|orchestra"
+    when :composer
+      "composer|arranger"
+    end
+  end
+
   def self.search params={}
     skope = scoped
-    skope = skope.where(["person_type = ?", params[:person_type]]) unless params[:person_type].blank?
-    skope = skope.where(["canonical_name like ?", '%'+params[:canonical_name].downcase+'%']) unless params[:canonical_name].blank?
+    skope = skope.where(["person_type REGEXP ?", "#{expanded_types(params[:person_type])}"]) unless params[:person_type].blank?
+    skope = skope.where(["canonical_name like ?", "%#{params[:canonical_name].downcase}%"]) unless params[:canonical_name].blank?
     skope
   end
 
@@ -51,7 +61,7 @@ class Person < ActiveRecord::Base
   end
 
   def performer?
-    person_type == 'performer'
+    !person_type.downcase[/(performer|ensemble|orchestra)/].blank?
   end
 
 end
