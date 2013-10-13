@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  EARLIEST_YEAR = 1500
+  EARLIEST_YEAR = 1800
 
   attr_accessible :person_type, :canonical_name, :date_of_birth, :date_of_death, :place_of_birth, :place_of_death
 

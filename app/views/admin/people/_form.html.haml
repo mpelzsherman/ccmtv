@@ -10,8 +10,8 @@
     .span8
       = f.input :canonical_name
       = f.input :person_type
-      = f.input :date_of_birth, :start_year => Person::EARLIEST_YEAR
+      = f.input :date_of_birth, :as => :date_picker
       = f.input :place_of_birth
       = f.input :place_of_death
-      = f.input :date_of_death, :start_year => Person::EARLIEST_YEAR
+      = f.input :date_of_death, :as => :date_picker
       = f.submit 'Save'
