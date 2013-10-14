@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
   EARLIEST_YEAR = 1800
 
-  attr_accessible :person_type, :canonical_name, :date_of_birth, :date_of_death, :place_of_birth, :place_of_death
+  attr_accessible :person_type, :canonical_name, :date_of_birth, :date_of_death, :place_of_birth, :place_of_death, :birth_country_id, :death_country_id
 
   belongs_to :birth_country, :class_name => 'Country'
   belongs_to :death_country, :class_name => 'Country'

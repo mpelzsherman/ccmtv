@@ -11,7 +11,15 @@
       = f.input :canonical_name
       = f.input :person_type
       = f.input :date_of_birth, :as => :date_picker
-      = f.input :place_of_birth
-      = f.input :place_of_death
+      = f.input :place_of_birth, label: "Birth City"
+      = f.label "Birth Country"
+      %br
+      = collection_select(:person, :birth_country_id, Country.order('name'), :id,
+                          :name, {:prompt => 'Select Birth Country'}, { class: "chzn-select"})
+      = f.input :place_of_death, label: "Death City"
+      = f.label "Death Country"
+      %br
+      = collection_select(:person, :death_country_id, Country.order('name'), :id,
+                          :name, {:prompt => 'Select Death Country'}, {:class => "chzn-select"})
       = f.input :date_of_death, :as => :date_picker
       = f.submit 'Save'
