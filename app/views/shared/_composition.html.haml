@@ -7,32 +7,11 @@
   %b Composer:
   = @composition.composer.canonical_name
 %p
-  %b Comp group:
-  = @composition.comp_group
-%p
-  %b Movement name:
-  = @composition.movement_name
-%p
-  %b Movement num:
-  = @composition.movement_num
-%p
-  %b Catalog num1:
-  = @composition.catalog_num1
-%p
-  %b Catalog num2:
-  = @composition.catalog_num2
-%p
-  %b Catalog num3:
-  = @composition.catalog_num3
-%p
   %b Year composed begin:
   = @composition.year_composed_begin
 %p
   %b Year composed end:
   = @composition.year_composed_end
-%p
-  %b Person:
-  = @composition.person_id
 %p
   %b Rating:
   = @composition.rating
@@ -45,6 +24,6 @@
 
 %h2 Performances
 %ul
-  -@composition.performances.each do |p|
+  -PerformanceDecorator.decorate(@composition.performances).each do |p|
     %li
-      = link_to "#{p.composition.title} (#{p.perf_date})", performance_path(p)
+      = p.performance_link

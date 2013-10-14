@@ -1,0 +1,15 @@
+-#todo make composer and performer links
+
+%h1
+  =@performance.composition_link
+%h2
+  Performed by
+  =@performance.performer_link
+
+%ul
+  -@performance.performance_roles.each do |r|
+    %li
+      ="#{r.person.canonical_name}: #{r.role_name}"
+
+.well
+  !=@performance.url.embeded_code

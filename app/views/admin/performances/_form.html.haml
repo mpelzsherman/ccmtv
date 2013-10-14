@@ -1,4 +1,4 @@
-= form_for [:admin, @performance] do |f|
+= simple_form_for [:admin, @performance] do |f|
   -if @performance.errors.any?
     #error_explanation
       %h2= "#{pluralize(@performance.errors.count, "error")} prohibited this performance from being saved:"
@@ -43,6 +43,8 @@
         !=@performance.url.embeded_code
 
   .clearfix
+
+  = f.input :perf_date, :as => :date_picker, label: 'Performance Date'
 
   %h1 Additional Roles
   = f.fields_for :performance_roles do |b|

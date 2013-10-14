@@ -5,7 +5,7 @@ class PerformancesController < ApplicationController
     @performances = PerformanceDecorator.decorate Performance.paginate(:page => params[:page]||1)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render :json => @performances }
     end
   end
@@ -13,10 +13,10 @@ class PerformancesController < ApplicationController
   # GET /performances/1
   # GET /performances/1.json
   def show
-    @performance = Performance.find(params[:id])
+    @performance = PerformanceDecorator.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json { render :json => @performance }
     end
   end

@@ -31,9 +31,17 @@ class PerformanceDecorator < ApplicationDecorator
     end
   end
 
+  def perf_date
+    model.perf_date.nil? ? 'unknown date' : model.perf_date
+  end
+
   def composition_link
     h.link_to(model.composition.title, h.composition_path(model.composition)) +
         ' by ' +
     h.link_to(model.composition.composer.canonical_name, h.person_path(model.composition.composer))
+  end
+
+  def performance_link
+    h.link_to("by #{model.performer.canonical_name}, on #{perf_date}", h.performance_path(model))
   end
 end

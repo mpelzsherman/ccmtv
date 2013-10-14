@@ -32,3 +32,7 @@ $(document).ready ->
   $(".chzn-select").chosen()
   createPerformerLink()
   createCompositionLink()
+
+jQuery ->
+  $("input.date_picker").datepicker
+    dateFormat: 'yy-mm-dd', changeYear: true, yearRange: "1900:2013"
