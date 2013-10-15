@@ -11,3 +11,10 @@
 
 .well
   !=@performance.url.embeded_code
+
+- if can? :edit, :performance
+  = link_to 'Edit', edit_admin_performance_path(@admin_performance)
+
+- if can? :create, :performance
+  %p
+  = link_to 'Create New Performance', new_admin_performance_path, :class => 'btn btn-small'
