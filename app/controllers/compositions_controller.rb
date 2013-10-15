@@ -2,7 +2,9 @@ class CompositionsController < ApplicationController
   # GET /compositions
   # GET /compositions.json
   def index
-    @compositions = CompositionDecorator.decorate Composition.paginate(:page => params[:page]||1)
+    params[:composition] ||= {}
+    @compositions = CompositionDecorator.decorate Composition.search(params[:composition]).by_title.paginate(:page => params[:page]||1)
+    @composition = Composition.new(params[:composition])
 
     respond_to do |format|
       format.html # index.html.erb

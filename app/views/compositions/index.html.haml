@@ -1,8 +1,12 @@
-%h1 Compositions
-
-- if can? :edit, :compositions
-  = link_to 'Create New Composition', new_admin_composition_path, :class => 'btn btn-small'
-  %p
+%h1
+  Compositions
+  - if can? :edit, :compositions
+    = link_to 'Create New Composition', new_admin_composition_path, :class => 'btn btn-small'
+    %p
+.well
+  = simple_form_for @composition, :method => :get, :html => {:class => 'form-inline form-search span7' } do |f|
+    = f.input_field :title, :class => 'input-small span3', :placeholder => "enter a title"
+    = f.submit 'Search', :class => 'btn btn-small'
 
 = will_paginate(@compositions)
 
@@ -10,10 +14,6 @@
   %tr
     %th ID
     %th Title
-    %th Comp group
-    %th Movement name
-    %th Movement num
-    %th Catalog
     %th Composed
     %th Person
     %th Rating
@@ -26,13 +26,6 @@
     %tr
       %td= composition.id
       %td= composition.title_link
-      %td= composition.comp_group
-      %td= composition.movement_name
-      %td= composition.movement_num
-      %td
-        = composition.catalog_num1
-        = composition.catalog_num2
-        = composition.catalog_num3
       %td
         = composition.year_composed_begin
         to

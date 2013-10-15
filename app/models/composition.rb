@@ -4,4 +4,11 @@ class Composition < ActiveRecord::Base
   has_many :performances
 
   scope :top10, limit(10)
+  scope :by_title, order(:title)
+
+  def self.search params={}
+    skope = scoped
+    skope = skope.where(["title like ?", "%#{params[:title].downcase}%"]) unless params[:title].blank?
+    skope
+  end
 end
