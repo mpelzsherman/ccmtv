@@ -1,7 +1,8 @@
-%h1 Editing admin_composition
+%h1
+  ="Editing Composition: #{@composition.title}"
 
 = render 'form'
 
-= link_to 'Show', @admin_composition
+= link_to 'Show', @composition
 \|
 = link_to 'Back', admin_compositions_path
