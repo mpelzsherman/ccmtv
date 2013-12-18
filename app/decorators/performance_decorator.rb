@@ -42,6 +42,7 @@ class PerformanceDecorator < ApplicationDecorator
   end
 
   def performance_link
-    h.link_to("by #{model.performer.canonical_name}, on #{perf_date}", h.performance_path(model))
+    performer_name = model.performer ? model.performer.canonical_name : 'unknown'
+    h.link_to("by #{performer_name}, on #{perf_date}", h.performance_path(model))
   end
 end
