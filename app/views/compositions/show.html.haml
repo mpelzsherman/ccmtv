@@ -1,3 +1,6 @@
 =render "shared/composition"
 
+- if can? :edit, :compositions
+  = link_to 'Edit', edit_admin_composition_path(@composition)
+  |
 = link_to 'Back', compositions_path
