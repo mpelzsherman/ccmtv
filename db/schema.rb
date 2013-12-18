@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131014011328) do
+ActiveRecord::Schema.define(:version => 20131218002632) do
 
-  create_table "COMPOSITIONS", :force => true do |t|
+  create_table "compositions", :force => true do |t|
     t.string  "title"
     t.string  "comp_group",          :limit => 64
     t.string  "movement_name",       :limit => 64
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20131014011328) do
     t.integer "views",                             :default => 0
     t.date    "created_on"
     t.date    "updated_on"
+    t.text    "description"
   end
 
   add_index "compositions", ["comp_group"], :name => "comp_group_idx"

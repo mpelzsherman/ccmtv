@@ -1,3 +1,4 @@
+= tinymce_assets
 = simple_form_for [:admin, @composition] do |f|
   -if @composition.errors.any?
     #error_explanation
@@ -18,5 +19,10 @@
   .field
     = f.label :year_composed_end
     = f.text_field :year_composed_end
+  .field
+    = f.input :description,  :input_html => {:class => "tinymce", :rows => 40, :cols => 80}
+    - tinymce
   .actions
     = f.submit 'Save'
+
+  = tinymce

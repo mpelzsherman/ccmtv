@@ -10,7 +10,13 @@
       ="#{r.person.canonical_name}: #{r.role_name}"
 
 .well
-  !=@performance.url.embeded_code
+  %table{ width: 800, cellpadding: "5"}
+    %tr{valign: "top"}
+      %td
+        !=@performance.url.embeded_code
+      %td
+        %div{id: "composition_description", style: "overflow-y: scroll; width: 600px; height:400px;"}
+          !=@performance.composition.description
 
 - if can? :edit, :performance
   = link_to 'Edit', edit_admin_performance_path(@admin_performance)
