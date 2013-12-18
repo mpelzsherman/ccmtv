@@ -11,6 +11,7 @@ gem 'cancan'
 gem 'chosen-rails'
 gem 'spreadsheet'
 gem 'seed-fu', '~> 2.2.0'
+gem 'elasticsearch'
 
 # Gems used only for assets and not required
 # in production environments by default.
