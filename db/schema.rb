@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131218002632) do
+ActiveRecord::Schema.define(:version => 20131218142933) do
 
   create_table "compositions", :force => true do |t|
     t.string  "title"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20131218002632) do
     t.datetime "created_on"
     t.datetime "updated_on"
     t.string   "person_type"
+    t.text     "description"
   end
 
   create_table "performance_roles", :force => true do |t|

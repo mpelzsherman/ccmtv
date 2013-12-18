@@ -1,3 +1,6 @@
 =render "shared/person"
 
+- if can? :edit, :people
+  = link_to 'Edit', edit_admin_person_path(@person)
+  \|
 = link_to 'Back', people_path

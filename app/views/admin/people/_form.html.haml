@@ -1,3 +1,5 @@
+= tinymce_assets
+= tinymce
 = simple_form_for [:admin, @person], :html => {:class => 'form-inline' } do |f|
   -if @person.errors.any?
     .alert.alert-error
@@ -7,7 +9,7 @@
           %li= msg
 
   .row-fluid
-    .span8
+    .span3
       = f.input :canonical_name
       = f.input :person_type
       = f.input :date_of_birth, :as => :date_picker
@@ -23,3 +25,7 @@
                           :name, {:prompt => 'Select Death Country'}, {:class => "chzn-select"})
       = f.input :date_of_death, :as => :date_picker
       = f.submit 'Save'
+    .span9
+      .field
+        = f.input :description,  :input_html => {:class => "tinymce", :rows => 40, :cols => 80}
+        - tinymce

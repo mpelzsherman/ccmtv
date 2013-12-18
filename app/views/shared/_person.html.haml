@@ -18,6 +18,9 @@
   %b Date of death:
   = @person.date_of_death
 
+%p
+  != @person.description
+
 - if @person.performer?
   %h2 Performances
   %ul
